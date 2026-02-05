@@ -1,0 +1,6 @@
+{
+  "GEMINI_API_KEY": "AIzaSyCSEsMhmoWOOpFOOW3enZZ-Y3FtMxkkvd8",
+  "MODEL_NAME": "gemini-1.5-pro",
+  "TEMPERATURE": 0.7,
+  "MAX_TOKENS": 2048
+}
