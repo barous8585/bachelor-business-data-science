@@ -1,16 +1,26 @@
 # UCO Data Science Hub
 
-Outils de révision et de pratique pour les étudiants du **Bachelor Business Data Science** de l'UCO Angers : statistiques interactives, assistant code, cas business, flashcards à répétition espacée, générateur de datasets, entretiens, portfolio, entraide et espace professeur.
+La plateforme de la formation **Business Data Science** de l'UCO Angers (B1, B2, B3), pour les **étudiants**, les **professeurs** et **l'administration**. Elle répond aux problèmes rencontrés avec Teams : canaux recréés chaque année, documents mal identifiés, consignes de devoirs ambiguës, informations importantes noyées.
 
-## Version web (`index.html`)
+## Ce que fait la plateforme
 
-Le site tient en **un seul fichier**, `index.html`, sans serveur ni installation.
+- **Matières stables d'une année sur l'autre**, avec leurs séances (CM, TD, TP, CC) et des documents typés : support, sujet, corrigé, données. Les documents pointent vers Teams / SharePoint.
+- **Fiche devoir standard** : objectif, livrable, format, modalité, date et heure, lieu de dépôt, barème, documents. Un indicateur de clarté montre au professeur ce qui manque avant publication.
+- **Questions sur la consigne** : posées sur la fiche, la réponse du professeur est visible par toute la promo.
+- **Annonces** par niveau d'importance ; les urgentes restent en bandeau jusqu'à lecture.
+- **Calendrier unique** : cours, rendus, contrôles, jalons de projets, vacances, fermetures.
+- **Projets encadrés** avec groupes et jalons.
+- **Administration** : préparer l'année suivante en recopiant la structure, charge de travail par promo (rendus qui se chevauchent), questions sans réponse, catalogue des matières.
+- **Boîte à outils** : statistiques, assistant code, cas business, ressources, flashcards, datasets, entretiens, portfolio, entraide.
 
-- **Tester en local** : double-clique sur `index.html` (connexion Internet nécessaire pour les polices, KaTeX et jStat).
-- **Publier sur GitHub Pages** : dans le dépôt GitHub, *Settings → Pages → Build and deployment*, choisis *Deploy from a branch*, branche `main`, dossier `/ (root)`, puis *Save*. Le site sera en ligne sur `https://barous8585.github.io/bachelor-business-data-science/`.
-- **Données** : pour l'instant, tout est enregistré dans le navigateur de chaque utilisateur (localStorage). Tout l'accès aux données passe par l'objet `Store` en haut du script : pour brancher une base en ligne (Supabase, Firebase…), il suffit de réécrire ses méthodes.
-- **Contenu** : les questions, flashcards, cas business, ressources, etc. sont dans l'objet `CONTENT` au milieu du fichier, modifiables directement.
-- **À venir** : comptes utilisateurs, base de données partagée, génération d'exercices par IA (via un service qui garde la clé API secrète).
+## Utilisation
+
+Le site tient en **un seul fichier**, `index.html`, sans serveur.
+
+- **Tester** : ouvrir `index.html` dans un navigateur, choisir un profil (le bouton en haut à droite permet d'en changer). Des données d'exemple (noms fictifs) montrent le fonctionnement ; on peut les retirer dans Administration › Exemples.
+- **Publier sur GitHub Pages** : *Settings → Pages*, *Deploy from a branch*, branche `main`, dossier `/ (root)`. Adresse : `https://barous8585.github.io/bachelor-business-data-science/`.
+- **Données** : pour l'instant, enregistrées dans le navigateur de chaque utilisateur. Tout passe par l'objet `Store` en haut du script : le brancher sur une base partagée (Supabase…) rendra annonces, devoirs et questions communs à tous.
+- **À venir** : comptes et base partagée, connexion à Teams (Microsoft Graph, avec l'accord de la DSI de l'UCO), génération d'exercices par IA.
 
 ## Ancienne version Streamlit
 

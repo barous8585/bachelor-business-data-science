@@ -307,6 +307,129 @@ hr.sep{border:0; border-top:1px solid var(--line); margin:22px 0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
 @media print{.topbar,.sidebar{display:none}.layout{display:block}body{background:#fff}}
 
+/* ================= Ma formation ================= */
+.profile-btn{display:flex; align-items:center; gap:8px; border:1px solid var(--line); background:var(--sheet); color:var(--ink); border-radius:999px; padding:4px 12px 4px 4px; font:inherit; cursor:pointer; text-align:left; max-width:260px}
+.profile-btn:hover{border-color:var(--ink-3)}
+.pb-text{display:flex; flex-direction:column; line-height:1.15; min-width:0}
+.pb-text b{font-size:.88rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pb-text span{font-size:.75rem; color:var(--ink-3)}
+@media (max-width:520px){.pb-text span{display:none}.profile-btn{max-width:150px}}
+dialog{border:0; padding:0; border-radius:var(--r-lg); background:var(--sheet); color:var(--ink); box-shadow:0 24px 60px -20px rgba(0,0,0,.5); width:min(480px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(15,23,36,.5)}
+.dlg{padding:24px}
+.onboard{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:40px; align-items:center; min-height:60vh}
+.onboard h1{font-size:clamp(2rem,1.4rem + 2.4vw,3.1rem); max-width:16ch}
+.onboard .lede{font-size:1.1rem; color:var(--ink-2); max-width:46ch}
+@media (max-width:820px){.onboard{grid-template-columns:minmax(0,1fr)}}
+.banner{display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; background:var(--red-soft); border:1px solid color-mix(in srgb,var(--red) 35%,transparent); border-left:5px solid var(--red); border-radius:var(--r); padding:12px 16px; margin-bottom:16px}
+.banner p{margin:2px 0 0; font-size:.92rem}
+.crumbs{font-size:.9rem; color:var(--ink-3); margin:0 0 8px}
+.crumbs a{color:var(--ink-2)}
+.sec-title{font-size:1rem; color:var(--ink-2); border-bottom:2px solid var(--ink); padding-bottom:6px}
+.mat-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px}
+.mat-card,.proj-card{display:flex; flex-direction:column; gap:6px; text-decoration:none; color:inherit; background:var(--sheet); border:1px solid var(--line); border-radius:var(--r); padding:16px}
+.mat-card:hover,.proj-card:hover{border-color:var(--ink-3)}
+.mat-card b{font-family:var(--f-head); font-size:1.05rem}
+.ev-title{font-weight:700; color:var(--ink); text-decoration:none}
+a.ev-title:hover{color:var(--teal); text-decoration:underline}
+.list.evs>li,.ev{display:flex; gap:10px; align-items:flex-start}
+.ev-dot{display:inline-block; width:10px; height:10px; border-radius:50%; flex:none; margin-top:7px; background:var(--ink-3)}
+.k-cours{background:var(--teal)} .k-rendu{background:var(--red)} .k-examen{background:#7B4FD6} .k-jalon{background:#D98A1E} .k-vacances{background:#8FA3BF} .k-fermeture{background:#1B2A41} .k-autre{background:var(--ink-3)}
+:root[data-theme="dark"] .k-fermeture{background:#E6ECF3}
+.chip.lvl-urgent{background:var(--red); color:#fff; border-color:transparent; font-weight:700}
+.chip.lvl-important{background:#F6D9A8; color:#5A3A00; border-color:transparent; font-weight:700}
+.chip.lvl-info{background:var(--teal-soft); color:var(--ink); border-color:transparent}
+.ann{border-left:5px solid var(--line)}
+.ann-urgent{border-left-color:var(--red)} .ann-important{border-left-color:#D98A1E} .ann-info{border-left-color:var(--teal)}
+.ann.is-read{opacity:.72}
+.dash-devs>li{padding:10px 0}
+.dash-dev{display:flex; gap:14px; align-items:center; text-decoration:none; color:inherit; border-radius:10px}
+.dash-dev .due{display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:72px; padding:8px 6px; border-radius:10px; background:var(--paper); border:1px solid var(--line)}
+.dash-dev .due b{font-family:var(--f-head); font-size:1.15rem}
+.dash-dev .due span{font-size:.75rem; color:var(--ink-3)}
+.dash-dev.soon .due{background:var(--red-soft); border-color:color-mix(in srgb,var(--red) 40%,transparent)}
+.dash-dev.soon .due b{color:var(--red)}
+.dd-body{display:flex; flex-direction:column; gap:2px; min-width:0}
+.dash-dev:hover .dd-body b{color:var(--teal)}
+.due-pill{font-family:var(--f-head); font-size:.85rem; font-weight:700; padding:3px 10px; border-radius:999px; background:var(--paper); border:1px solid var(--line); white-space:nowrap}
+.due-pill.soon{background:var(--red-soft); color:var(--red); border-color:transparent}
+.timeline{list-style:none; margin:14px 0 0; padding:0}
+.timeline>li{display:grid; grid-template-columns:120px minmax(0,1fr); gap:14px; padding:12px 0; border-top:1px solid var(--line); position:relative}
+.timeline>li:first-child{border-top:0}
+.timeline>li.past{opacity:.62}
+.timeline>li.now .tl-date b,.timeline>li.late .tl-date span{color:var(--red)}
+.tl-date{display:flex; flex-direction:column; font-size:.88rem}
+.tl-date b{font-family:var(--f-head)}
+.tl-date span{color:var(--ink-3); font-size:.8rem}
+@media (max-width:520px){.timeline>li{grid-template-columns:1fr; gap:4px}}
+.docs{list-style:none; margin:8px 0 0; padding:0; display:grid; gap:6px}
+.docs li{display:flex; gap:8px; align-items:center; flex-wrap:wrap; font-size:.95rem}
+.chip.doc-support{background:#DDE6F7; color:#1D3A6E; border-color:transparent}
+.chip.doc-sujet{background:var(--teal-soft); color:var(--ink); border-color:transparent}
+.chip.doc-corrige{background:var(--mark-soft); color:var(--ink); border-color:transparent}
+.chip.doc-dataset{background:#EADFF8; color:#4B2A85; border-color:transparent}
+.chip.doc-enregistrement,.chip.doc-autre{background:var(--paper)}
+:root[data-theme="dark"] .chip.doc-support,:root[data-theme="dark"] .chip.doc-dataset{color:#1B2A41}
+.chip.st-CM{background:#DDE6F7; color:#1D3A6E; border-color:transparent; font-weight:700}
+.chip.st-TD{background:var(--teal-soft); color:var(--ink); border-color:transparent; font-weight:700}
+.chip.st-TP{background:#EADFF8; color:#4B2A85; border-color:transparent; font-weight:700}
+.chip.st-CC,.chip.st-EX{background:var(--red-soft); color:var(--red); border-color:transparent; font-weight:700}
+.fiche{margin:0}
+.fiche-row{display:grid; grid-template-columns:150px minmax(0,1fr); gap:14px; padding:10px 0; border-top:1px solid var(--line)}
+.fiche-row:first-child{border-top:0}
+.fiche dt{font-weight:700; color:var(--ink-2); font-size:.92rem}
+.fiche dd{margin:0}
+@media (max-width:520px){.fiche-row{grid-template-columns:1fr; gap:2px}}
+.missing{color:var(--red); font-style:italic}
+table.bareme td{white-space:normal}
+.qa{list-style:none; margin:12px 0 0; padding:0}
+.qa>li{padding:12px 0; border-top:1px solid var(--line)}
+.qa>li:first-child{border-top:0}
+.qa .q,.qa .a{display:flex; gap:10px}
+.qa .q p,.qa .a p{margin:4px 0 0}
+.qa .a{margin:10px 0 0 38px; padding:10px 12px; background:var(--mark-soft); border-radius:10px}
+.qa .waiting{margin:8px 0 0 38px}
+.qa .a-form{margin:10px 0 0 38px}
+.avatar.prof{background:var(--mark); color:#1B2A41}
+.due-card{display:flex; flex-direction:column; gap:2px}
+.due-card .big{font-family:var(--f-head); font-size:1.9rem; line-height:1.1}
+.due-card.soon{border-color:color-mix(in srgb,var(--red) 45%,transparent)}
+.due-card.soon .big{color:var(--red)}
+.clar{list-style:none; margin:10px 0 0; padding:0; display:grid; gap:6px}
+.clar li{display:flex; gap:8px; align-items:center; font-size:.95rem}
+.clar li::before{content:""; width:16px; height:16px; border-radius:50%; flex:none; border:2px solid var(--ink-3)}
+.clar li.on::before{background:var(--teal); border-color:var(--teal); box-shadow:inset 0 0 0 3px var(--sheet)}
+.clar li.off{color:var(--ink-3)}
+.er{display:grid; gap:6px; margin-top:6px}
+.er-row{display:flex; gap:6px; flex-wrap:wrap}
+.er-row input,.er-row select{min-width:0}
+.er-row select{flex:0 0 150px}
+.er>[data-er-add]{justify-self:start}
+.cal-h,.cal-b{display:grid; grid-template-columns:repeat(7,minmax(0,1fr))}
+.cal-h span{font-size:.8rem; color:var(--ink-3); text-align:center; padding:4px 0}
+.cal-b{border-top:1px solid var(--line); border-left:1px solid var(--line)}
+.cal-c{display:flex; flex-direction:column; gap:2px; align-items:stretch; min-height:92px; padding:4px; background:var(--sheet); border:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); font:inherit; color:inherit; text-align:left; cursor:pointer; min-width:0}
+.cal-c:hover{background:var(--paper)}
+.cal-c.out{background:color-mix(in srgb,var(--paper) 70%,var(--sheet)); color:var(--ink-3)}
+.cal-c.sel{box-shadow:inset 0 0 0 2px var(--teal)}
+.cal-n{font-family:var(--f-head); font-size:.85rem; font-weight:700}
+.cal-c.today .cal-n{background:var(--teal); color:var(--teal-ink); border-radius:999px; padding:0 7px; align-self:flex-start}
+.cal-e{font-size:.72rem; line-height:1.25; padding:1px 5px; border-radius:4px; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.cal-e.k-vacances,.cal-e.k-jalon{color:#1B2A41}
+:root[data-theme="dark"] .cal-e.k-fermeture,:root[data-theme="dark"] .cal-e.k-cours{color:#0F1724}
+.cal-more{font-size:.72rem; color:var(--ink-3)}
+@media (max-width:640px){.cal-c{min-height:54px}.cal-e{font-size:0; height:6px; padding:0; border-radius:3px}.cal-more{display:none}}
+.legend{display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:12px; font-size:.85rem; color:var(--ink-2)}
+.legend>span{display:inline-flex; gap:6px; align-items:center}
+.legend .ev-dot{margin:0}
+table.heat td.h1{background:var(--teal-soft)} table.heat td.h2{background:var(--mark-soft)} table.heat td.h3{background:#F6D9A8; color:#1B2A41} table.heat td.h4{background:var(--red); color:#fff; font-weight:700}
+.dash-dev .due{min-width:86px}
+.dash-dev .due span{white-space:nowrap}
+.sheet>.spread:first-child{align-items:baseline; margin-bottom:6px}
+.sheet>.spread:first-child>h2{margin:0}
+.sheet>.spread:first-child>a.small{white-space:nowrap}
+@media (max-width:520px){.brand span{display:none}}
+
 </style>
 </head>
 <body>
@@ -1537,7 +1660,10 @@ const fmt = (x, d = 2) => Number.isFinite(x) ? x.toLocaleString("fr-FR", { minim
 const fmt4 = (x) => fmt(x, 4);
 const pct = (x, d = 1) => Number.isFinite(x) ? (x * 100).toLocaleString("fr-FR", { minimumFractionDigits: d, maximumFractionDigits: d }) + " %" : "—";
 const dateFR = (iso) => { if (!iso) return ""; const d = new Date(iso); return isNaN(d) ? iso : d.toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" }); };
-const today = () => new Date().toISOString().slice(0, 10);
+const isoLocal = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+const today = () => isoLocal(new Date());
+const addDays = (iso, n) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() + n); return isoLocal(d); };
+const daysUntil = (iso) => Math.round((new Date(iso.slice(0, 10) + "T12:00:00") - new Date(today() + "T12:00:00")) / 864e5);
 const initials = (name) => (name || "?").trim().split(/\s+/).map(w => w[0]).slice(0, 2).join("").toUpperCase();
 const stripEmoji = (s) => String(s).replace(/^[\p{Extended_Pictographic}️‍\s]+/u, "").trim();
 
@@ -1650,8 +1776,8 @@ function chart({ xs, ys, discrete = false, shade = null, hl = null, lines = [], 
 const linspace = (a, b, n = 300) => Array.from({ length: n }, (_, i) => a + (b - a) * i / (n - 1));
 
 /* Affiche un message clair plutôt qu'un onglet vide si un outil plante */
-async function safeRender(fn, el) {
-  try { await fn(el); }
+async function safeRender(fn, el, ...args) {
+  try { await fn(el, ...args); }
   catch (err) {
     console.error(err);
     const offline = !window.jStat || !window.katex;
@@ -1696,19 +1822,20 @@ const ICONS = {
   teacher: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
   settings: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
 };
-const GROUPS = ["Apprendre", "S'organiser", "Carrière", "Communauté", "Enseigner"];
+const GROUPS = ["Ma formation", "Administration", "Boîte à outils"];
 const TOOLS = [];
 function tool(def) { TOOLS.push(def); }
 const svgIcon = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k] || ""}</svg>`;
 
 
+const visibleTools = () => TOOLS.filter(t => !t.hidden && (!t.roles || (PROFILE && t.roles.includes(PROFILE.role))));
 async function renderNav(currentId) {
-  const due = (await Store.list("flashcards")).filter(isDue).length;
-  const visible = TOOLS.filter(t => !t.hidden);
-  let html = `<a class="nav-link" href="#/" ${!currentId ? 'aria-current="page"' : ""}>${svgIcon("home")}Accueil</a>`;
+  const visible = visibleTools();
+  let html = `<a class="nav-link" href="#/" ${!currentId ? 'aria-current="page"' : ""}>${svgIcon("home")}Tableau de bord</a>`;
   for (const g of GROUPS) {
     const items = visible.filter(t => t.group === g); if (!items.length) continue;
-    html += `<div class="nav-group"><h2>${g}</h2>${items.map(t => `<a class="nav-link" href="#/${t.id}" ${t.id === currentId ? 'aria-current="page"' : ""}>${svgIcon(t.icon)}${esc(t.title)}${t.id === "revisions" && due ? `<span class="nav-badge" title="Cartes à réviser">${due}</span>` : ""}</a>`).join("")}</div>`;
+    const links = await Promise.all(items.map(async t => { const n = t.badge ? await t.badge() : 0; return `<a class="nav-link" href="#/${t.id}" ${t.id === currentId ? 'aria-current="page"' : ""}>${svgIcon(t.icon)}${esc(t.title)}${n ? `<span class="nav-badge" title="${esc(t.badgeTitle || "")}">${n}</span>` : ""}</a>`; }));
+    html += `<div class="nav-group"><h2>${g}</h2>${links.join("")}</div>`;
   }
   html += `<div class="sidebar-foot"><a class="nav-link" href="#/reglages" ${currentId === "reglages" ? 'aria-current="page"' : ""}>${svgIcon("settings")}Mes données</a></div>`;
   $("#sidebar").innerHTML = html;
@@ -1717,6 +1844,7 @@ async function renderNav(currentId) {
 /* Navigation interne : l'appli garde elle-même la page courante (CURRENT) et
    n'utilise l'adresse du navigateur que si elle est disponible. Ainsi les liens
    fonctionnent aussi dans un aperçu intégré, où suivre un lien ferait quitter la page. */
+let PROFILE = null;
 let CURRENT = (() => { try { return location.hash.startsWith("#/") ? location.hash : "#/"; } catch { return "#/"; } })();
 function setAddress(h, replace) { try { if (location.hash !== h) history[replace ? "replaceState" : "pushState"](null, "", h); } catch { /* aperçu sans adresse : on ignore */ } }
 function navigate(h, { replace = false } = {}) { CURRENT = h; setAddress(h, replace); route(); }
@@ -1732,14 +1860,18 @@ window.addEventListener("hashchange", fromAddress);
 window.addEventListener("popstate", fromAddress);
 
 async function route() {
-  const [, id = "", tab = ""] = CURRENT.replace(/^#/, "").split("/");
+  const [, id = "", tab = "", ...rest] = CURRENT.replace(/^#/, "").split("/");
   const main = $("#main");
   closeMenu();
+  if (typeof renderProfileButton === "function") renderProfileButton();
   const t = TOOLS.find(x => x.id === id);
   await renderNav(t ? t.id : "");
   main.innerHTML = "";
+  if (PROFILE && typeof pageBanner === "function") { const b = document.createElement("div"); b.className = "page"; main.appendChild(b); await pageBanner(b, t ? t.id : ""); }
   const page = document.createElement("div"); page.className = "page"; main.appendChild(page);
-  if (!t) { await renderHome(page); document.title = "UCO Data Science Hub"; }
+  if (!PROFILE) { await safeRender(renderOnboarding, page); document.title = "Bienvenue · UCO Data Science Hub"; }
+  else if (!t || (t.roles && !t.roles.includes(PROFILE.role))) { await safeRender(renderDashboard, page); document.title = "Tableau de bord · UCO Data Science Hub"; }
+  else if (t.page) { document.title = `${t.title} · UCO Data Science Hub`; await safeRender(t.page, page, tab, ...rest); }
   else {
     document.title = `${t.title} · UCO Data Science Hub`;
     page.innerHTML = `<header class="page-head"><h1>${esc(t.title)}</h1>${t.lede ? `<p>${esc(t.lede)}</p>` : ""}</header><div class="body"></div>`;
@@ -1778,57 +1910,574 @@ function nextReview(card, rating) {
   return { difficulte: rating, streak, dernier_revu: new Date().toISOString(), next_review: d.toISOString().slice(0, 10), revisions: (card.revisions || 0) + 1 };
 }
 
-/* ---------------- Accueil ---------------- */
-async function renderHome(page) {
-  const [cards, projects, folio, deadlines] = await Promise.all([Store.list("flashcards"), Store.list("projects"), Store.getDoc("portfolio", {}), Store.list("deadlines")]);
-  const due = cards.filter(isDue).length;
-  const running = projects.filter(p => p.statut === "En cours");
-  const next = [...deadlines, ...CONTENT.forum.deadlines.map(d => ({ ...d, titre: d.cours }))].filter(d => d.date >= today()).sort((a, b) => a.date.localeCompare(b.date))[0];
-  const folioFields = ["full_name", "titre", "bio", "email"]; const folioPct = Math.round(folioFields.filter(f => folio[f]).length / folioFields.length * 100);
 
-  const resume = [];
-  resume.push(cards.length
-    ? `<a href="#/revisions"><b>${due ? `${due} carte${due > 1 ? "s" : ""} à réviser` : "Révisions à jour"}</b><span>${cards.length} flashcard${cards.length > 1 ? "s" : ""} au total</span></a>`
-    : `<a href="#/revisions/bibliotheque"><b>Commence tes flashcards</b><span>Importe un paquet tout prêt en un clic</span></a>`);
-  resume.push(running.length
-    ? `<a href="#/projets"><b>${running.length} projet${running.length > 1 ? "s" : ""} en cours</b><span>${esc(running[0].nom)}</span></a>`
-    : `<a href="#/projets/templates"><b>Lance un projet</b><span>Pars d'un modèle : EDA, ML, dashboard…</span></a>`);
-  if (next) resume.push(`<a href="#/forum/deadlines"><b>Prochaine échéance : ${dateFR(next.date)}</b><span>${esc(next.titre || next.cours)} · ${esc(next.type)}</span></a>`);
-  resume.push(`<a href="#/portfolio"><b>Portfolio ${folioPct ? `rempli à ${folioPct} %` : "à créer"}</b><span>${folioPct === 100 ? "Prêt à exporter" : "Présente tes projets aux recruteurs"}</span></a>`);
+/* =====================================================================
+   MA FORMATION — l'espace commun étudiants / professeurs / administration
+   Matières stables d'une année sur l'autre, séances et documents typés,
+   fiches devoir standard, annonces, calendrier unique, projets encadrés.
+   ===================================================================== */
 
-  page.innerHTML = `
-  <section class="hero">
-    <div>
-      <h1>Ton carnet de data science, de la loi normale à l'entretien.</h1>
-      <p class="lede">Les outils du Bachelor Business Data Science de l'UCO Angers : stats interactives, flashcards, cas business, portfolio. Tout ce que tu crées reste dans ton navigateur.</p>
-      <div class="row"><a class="btn" href="#/stats">Ouvrir les stats</a><a class="btn ghost" href="#/revisions">Réviser</a></div>
-    </div>
-    <figure class="hero-chart" style="margin:0">
-      <div class="readout"><span class="muted small">Loi normale centrée réduite</span><b id="hp">68,27 %</b></div>
-      <div id="hchart"></div>
-      <div class="controls">
-        <label>Borne basse <output id="ha-o">−1</output><input type="range" id="ha" min="-3.5" max="3.5" step="0.05" value="-1" aria-label="Borne basse"></label>
-        <label>Borne haute <output id="hb-o">1</output><input type="range" id="hb" min="-3.5" max="3.5" step="0.05" value="1" aria-label="Borne haute"></label>
-      </div>
-      <figcaption class="small muted" id="hcap" style="margin-top:6px">Déplace les bornes pour voir P(a ≤ Z ≤ b).</figcaption>
-    </figure>
-  </section>
-  <section aria-label="À reprendre"><div class="resume">${resume.join("")}</div></section>
-  <section class="directory" aria-label="Tous les outils">
-    ${GROUPS.map(g => `<div><h2>${g}</h2><ul>${TOOLS.filter(t => t.group === g && !t.hidden).map(t => `<li><a href="#/${t.id}"><b>${esc(t.title)}</b><span>${esc(t.short)}</span></a></li>`).join("")}</ul></div>`).join("")}
-  </section>`;
+const ROLES = { etudiant: "Étudiant", prof: "Professeur", admin: "Administration" };
+const PROMOS = ["B1", "B2", "B3"];
+const SEMESTRES = { B1: ["S1", "S2"], B2: ["S3", "S4"], B3: ["S5", "S6"] };
+const DOC_TYPES = { support: "Support de cours", sujet: "Sujet", corrige: "Corrigé", dataset: "Données", enregistrement: "Enregistrement", autre: "Autre" };
+const SEANCE_TYPES = { CM: "Cours magistral", TD: "Travaux dirigés", TP: "Travaux pratiques", CC: "Contrôle continu", EX: "Examen" };
+const ANN_LEVELS = { urgent: "Urgent", important: "Important", info: "Information" };
+const EVENT_KINDS = { cours: "Cours", rendu: "Rendu", jalon: "Jalon de projet", examen: "Examen", vacances: "Vacances", fermeture: "Fermeture", autre: "Autre" };
+const DEPOTS = ["Devoirs Teams", "Moodle", "Par email au professeur", "Sur papier, en séance", "Autre"];
+const isStaff = () => PROFILE && PROFILE.role !== "etudiant";
+const isAdmin = () => PROFILE && PROFILE.role === "admin";
+const profileKey = () => PROFILE ? `${PROFILE.role}:${PROFILE.nom}` : "anon";
+const defaultYear = () => { const d = new Date(); const y = d.getFullYear(); return d.getMonth() >= 7 ? `${y}-${y + 1}` : `${y - 1}-${y}`; };
+const activeYear = async () => Store.getDoc("annee_active", defaultYear());
+const fmtDay = (iso) => iso ? new Date(iso.slice(0, 10) + "T12:00:00").toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" }) : "";
+const fmtShort = (iso) => iso ? new Date(iso.slice(0, 10) + "T12:00:00").toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" }) : "";
+const countdown = (iso) => { const n = daysUntil(iso); return n < 0 ? `il y a ${-n} j` : n === 0 ? "aujourd'hui" : n === 1 ? "demain" : `dans ${n} jours`; };
+const docLink = (d) => d.lien ? `<a href="${esc(d.lien)}" target="_blank" rel="noopener">${esc(d.nom)}</a>` : `${esc(d.nom)} <span class="muted small">(lien à ajouter)</span>`;
+const docChip = (type) => `<span class="chip doc-${type}">${esc(DOC_TYPES[type] || type)}</span>`;
 
-  const xs = linspace(-4, 4, 260), ys = xs.map(x => Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI));
-  const draw = () => {
-    let a = +$("#ha").value, b = +$("#hb").value; if (a > b) [a, b] = [b, a];
-    $("#ha-o").textContent = fmt(+$("#ha").value, 2).replace("-", "−"); $("#hb-o").textContent = fmt(+$("#hb").value, 2).replace("-", "−");
-    $("#hchart").innerHTML = chart({ xs, ys, shade: [a, b], height: 230, label: `Courbe de Gauss, zone entre ${a} et ${b}` });
-    const p = window.jStat ? jStat.normal.cdf(b, 0, 1) - jStat.normal.cdf(a, 0, 1) : NaN;
-    $("#hp").textContent = pct(p, 2);
-    $("#hcap").textContent = `P(${fmt(a)} ≤ Z ≤ ${fmt(b)}) = ${pct(p, 2)}`.replace(/-/g, "−");
-  };
-  $("#ha").addEventListener("input", draw); $("#hb").addEventListener("input", draw); draw();
+/* ---------------- Profil ---------------- */
+function renderProfileButton() {
+  const host = $(".topbar-actions"); if (!host) return;
+  let b = $("#profileBtn");
+  if (!b) { b = document.createElement("button"); b.id = "profileBtn"; b.className = "profile-btn"; host.prepend(b); b.addEventListener("click", openProfileDialog); }
+  b.innerHTML = PROFILE ? `<span class="avatar">${initials(PROFILE.nom)}</span><span class="pb-text"><b>${esc(PROFILE.nom)}</b><span>${ROLES[PROFILE.role]}${PROFILE.role === "etudiant" ? " · " + PROFILE.niveau : ""}</span></span>` : `<span class="pb-text"><b>Choisir mon profil</b></span>`;
+  b.setAttribute("aria-label", "Changer de profil");
 }
+async function profileForm(cur = {}) {
+  const profs = [...new Set((await Store.list("matieres")).map(m => m.prof).filter(Boolean))].sort();
+  return `<div class="stack">
+    <div class="field">Je suis<div class="seg" id="roleSeg" style="margin-top:6px">${Object.entries(ROLES).map(([k, v]) => `<button type="button" data-role="${k}" aria-pressed="${(cur.role || "etudiant") === k}">${v}</button>`).join("")}</div></div>
+    <label class="field" id="f-nom">Prénom et nom<input type="text" name="nom" value="${esc(cur.role !== "prof" ? cur.nom || "" : "")}" placeholder="Ex. : Awa Camara"></label>
+    <label class="field" id="f-prof" hidden>Je suis<select name="prof">${opts([...profs, "Autre professeur"], cur.nom)}</select></label>
+    <label class="field" id="f-prof-autre" hidden>Nom affiché<input type="text" name="prof_autre" placeholder="Ex. : Mme Dupont"></label>
+    <label class="field" id="f-niveau">Ma promo<select name="niveau">${opts(PROMOS, cur.niveau || "B2")}</select></label></div>`;
+}
+function bindProfileForm(root) {
+  let role = $("#roleSeg [aria-pressed=true]", root).dataset.role;
+  const sync = () => {
+    $$("#roleSeg button", root).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.role === role)));
+    $("#f-nom", root).hidden = role === "prof"; $("#f-prof", root).hidden = role !== "prof"; $("#f-niveau", root).hidden = role !== "etudiant";
+    $("#f-prof-autre", root).hidden = !(role === "prof" && $("[name=prof]", root).value === "Autre professeur");
+    if (role === "admin" && !$("[name=nom]", root).value) $("[name=nom]", root).value = "Scolarité BDS";
+  };
+  $("#roleSeg", root).addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { role = b.dataset.role; sync(); } });
+  $("[name=prof]", root).addEventListener("change", sync); sync();
+  return () => {
+    const d = formData(root.closest("form") || root);
+    const nom = role === "prof" ? (d.prof === "Autre professeur" ? d.prof_autre : d.prof) : d.nom;
+    if (!nom) { toast("Indique ton nom."); return null; }
+    return { role, nom, niveau: role === "etudiant" ? d.niveau : null };
+  };
+}
+async function saveProfile(p) { PROFILE = p; await Store.setDoc("profile", p); }
+async function openProfileDialog() {
+  let dlg = $("#profileDlg");
+  if (!dlg) { dlg = document.createElement("dialog"); dlg.id = "profileDlg"; document.body.appendChild(dlg); }
+  dlg.innerHTML = `<form method="dialog" class="dlg"><h2>Mon profil</h2><p class="small muted">Tu peux changer de profil à tout moment pour voir la plateforme comme un étudiant, un professeur ou l'administration.</p>${await profileForm(PROFILE || {})}<div class="row" style="margin-top:18px;justify-content:flex-end"><button class="btn ghost" value="cancel" type="button" id="dlgCancel">Annuler</button><button class="btn" id="dlgOk">Enregistrer</button></div></form>`;
+  const read = bindProfileForm($("form", dlg));
+  $("#dlgCancel", dlg).onclick = () => dlg.close();
+  $("form", dlg).onsubmit = async (e) => { e.preventDefault(); const p = read(); if (!p) return; await saveProfile(p); dlg.close(); toast(`Profil : ${ROLES[p.role]}`); navigate("#/"); };
+  try { dlg.showModal(); } catch { dlg.setAttribute("open", ""); }
+}
+async function renderOnboarding(page) {
+  page.innerHTML = `<div class="onboard"><div><h1>Toute la formation BDS, rangée au même endroit.</h1>
+    <p class="lede">Cours, devoirs, calendrier et annonces des promos B1, B2 et B3 : les mêmes informations, claires, pour les étudiants, les professeurs et l'administration.</p>
+    <ul class="plain small"><li>Chaque devoir suit la même fiche : livrable, format, date, dépôt, barème.</li><li>Les questions sur une consigne reçoivent une réponse visible par toute la promo.</li><li>Les matières restent d'une année sur l'autre : plus besoin de tout recréer.</li></ul></div>
+    <form class="sheet" id="ob"><h2>Qui es-tu ?</h2>${await profileForm({ role: "etudiant" })}<button class="btn" style="margin-top:16px;width:100%">Entrer</button></form></div>`;
+  const read = bindProfileForm($("#ob"));
+  $("#ob").addEventListener("submit", async (e) => { e.preventDefault(); const p = read(); if (!p) return; await saveProfile(p); toast(`Bienvenue, ${p.nom}`); navigate("#/"); });
+}
+
+/* ---------------- Données de démonstration ---------------- */
+async function seedDemo() {
+  if (await Store.getDoc("seeded", false)) return;
+  const T = today(), Y = defaultYear(), D = (n) => addDays(T, n);
+  const M = {};
+  const mat = async (nom, niveau, semestre, prof, description) => { const m = await Store.add("matieres", { nom, niveau, semestre, prof, description, teams: "", demo: true }); M[nom] = m.id; return m; };
+  const b1 = [["Algorithmique et Programmation", "M. Petit"], ["Compléments de Maths", "Mme Lefèvre"], ["Exploitation des données", "Mme Roussel"], ["Probabilités", "M. Fontaine"], ["Statistique Descriptive", "Mme Lefèvre"], ["Statistique Inférentielle", "M. Fontaine"], ["Outils de pilotage 1", "M. Caron"]];
+  for (const [n, p] of b1) await mat(n, "B1", "S1", p, "");
+  await mat("Modèle linéaire", "B2", "S3", "Mme Lefèvre", "Régression simple et multiple, tests sur les coefficients, diagnostic des résidus. Travaux pratiques sous R.");
+  await mat("Programmation statistique avec R", "B2", "S3", "M. Benali", "Manipulation de données avec le tidyverse, graphiques avec ggplot2, rapports R Markdown.");
+  await mat("Programmation statistique avec SAS", "B2", "S3", "Mme Garnier", "Étapes DATA et procédures (MEANS, FREQ, SQL, REG).");
+  await mat("Méthodes factorielles", "B2", "S3", "M. Fontaine", "ACP, AFC et ACM : principes, interprétation, mise en œuvre.");
+  await mat("Programmation orientée objet", "B2", "S3", "Mme Moreau", "Classes, héritage, encapsulation, en Python.");
+  await mat("Initiation Java", "B2", "S3", "M. Petit", "");
+  await mat("Systèmes d'information décisionnels", "B2", "S3", "Mme Roussel", "Entrepôts de données, modélisation en étoile, tableaux de bord.");
+  await mat("Environnement marketing", "B2", "S3", "M. Caron", "");
+  await mat("Professional English", "B2", "S3", "Ms Hart", "");
+  for (const [n, p] of [["Machine learning", "M. Benali"], ["Big data", "M. Petit"], ["Data visualisation", "Mme Roussel"]]) await mat(n, "B3", "S5", p, "");
+
+  const se = (m, type, numero, titre, j, heure, salle, documents = []) => Store.add("seances", { matiere_id: M[m], annee: Y, type, numero, titre, date: D(j), heure, salle, documents, demo: true });
+  const ML = "Modèle linéaire";
+  await se(ML, "CM", 1, "Introduction et régression linéaire simple", -21, "08:30", "Amphi A", [{ nom: "Support du CM1 et CM2", type: "support", lien: "" }]);
+  await se(ML, "CM", 2, "Estimation par moindres carrés, tests sur les coefficients", -14, "08:30", "Amphi A");
+  await se(ML, "TD", 1, "Régression simple à la main", -12, "13:30", "B204", [{ nom: "Énoncé du TD1", type: "sujet", lien: "" }, { nom: "Corrigé du TD1", type: "corrige", lien: "" }]);
+  await se(ML, "TP", 1, "Prise en main de lm() sous R", -10, "13:30", "C110", [{ nom: "Sujet du TP1", type: "sujet", lien: "" }]);
+  await se(ML, "CM", 3, "Régression multiple et sélection de variables", -7, "08:30", "Amphi A", [{ nom: "Support du CM3", type: "support", lien: "" }]);
+  await se(ML, "TP", 2, "Régression sur les données ozone et ski", -5, "13:30", "C110", [{ nom: "Sujet du TP2", type: "sujet", lien: "" }, { nom: "ozone.csv", type: "dataset", lien: "" }, { nom: "Ski.xlsx", type: "dataset", lien: "" }]);
+  await se(ML, "TD", 2, "Diagnostic des résidus", -3, "10:15", "B204", [{ nom: "Énoncé du TD2", type: "sujet", lien: "" }]);
+  await se(ML, "TP", 3, "Régression multiple sur URBNAT (noté)", 1, "13:30", "C110", [{ nom: "Sujet du TP3", type: "sujet", lien: "" }, { nom: "URBNAT.xlsx", type: "dataset", lien: "" }]);
+  await se(ML, "CC", 1, "QCM de mi-semestre", 15, "08:30", "Amphi A", [{ nom: "QCM d'entraînement", type: "sujet", lien: "" }]);
+  const R = "Programmation statistique avec R", SAS = "Programmation statistique avec SAS", SD = "Statistique Descriptive";
+  await se(R, "CM", 1, "Le tidyverse : dplyr et tidyr", -15, "10:15", "Amphi B", [{ nom: "Support du CM1", type: "support", lien: "" }]);
+  await se(R, "TP", 1, "Graphiques avec ggplot2", -8, "15:30", "C112", [{ nom: "Sujet du TP1", type: "sujet", lien: "" }, { nom: "ventes_2025.csv", type: "dataset", lien: "" }]);
+  await se(R, "TP", 2, "Rapports R Markdown", 2, "15:30", "C112");
+  await se(SAS, "TP", 1, "Étape DATA et import de fichiers", -6, "10:15", "C114", [{ nom: "Sujet du TP1", type: "sujet", lien: "" }]);
+  await se(SAS, "TP", 2, "PROC MEANS et PROC FREQ", 4, "10:15", "C114", [{ nom: "Sujet du TP2", type: "sujet", lien: "" }]);
+  await se(SD, "CM", 1, "Indicateurs de position et de dispersion", -13, "08:30", "Amphi C", [{ nom: "Support du CM1", type: "support", lien: "" }]);
+  await se(SD, "TD", 1, "Calculs d'indicateurs", -6, "13:30", "A102", [{ nom: "Énoncé du TD1", type: "sujet", lien: "" }]);
+  await se(SD, "TD", 2, "Boîtes à moustaches et histogrammes", 1, "13:30", "A102");
+
+  const dv = (m, o) => Store.add("devoirs", { matiere_id: M[m], annee: Y, statut: "publie", questions: [], demo: true, ...o });
+  await dv(ML, { titre: "TP3 noté — régression multiple sur URBNAT", modalite: "En binôme", objectif: "Construire et interpréter un modèle de régression multiple pour expliquer le taux d'urbanisation des communes, puis justifier le choix des variables retenues.", livrable: "Un compte rendu qui présente le modèle final, l'interprétation des coefficients et le diagnostic des résidus, accompagné du script R.", format: "Un PDF de 6 pages maximum et un fichier .R qui s'exécute sans erreur. Noms des fichiers : NOM1_NOM2_TP3.", date_rendu: D(3), heure_rendu: "23:59", depot: "Devoirs Teams", depot_detail: "Un seul dépôt par binôme, par l'un des deux membres.",
+    criteres: [{ critere: "Modèle construit et justifié (sélection de variables)", points: 6 }, { critere: "Interprétation correcte des coefficients", points: 5 }, { critere: "Diagnostic des résidus commenté", points: 5 }, { critere: "Script R propre et reproductible", points: 2 }, { critere: "Clarté de la rédaction", points: 2 }],
+    documents: [{ nom: "Sujet du TP3", type: "sujet", lien: "" }, { nom: "URBNAT.xlsx", type: "dataset", lien: "" }], complements: "Les fonctions vues en TP2 (lm, step, plot) suffisent. Pas de package supplémentaire nécessaire.",
+    questions: [{ id: "q1", auteur: "Léa Martin", texte: "Est-ce qu'on peut faire le TP en Python au lieu de R ?", date: D(-2) + "T18:20", reponse: "Non, R uniquement : le script fait partie de la notation. La fonction lm() suffit.", repondu_par: "Mme Lefèvre", reponse_date: D(-1) + "T09:05" }, { id: "q2", auteur: "Moussa Diallo", texte: "Faut-il tester les interactions entre variables ou seulement les effets principaux ?", date: D(-1) + "T21:40" }] });
+  await dv(R, { titre: "Projet R — analyse exploratoire d'un jeu de données au choix", modalite: "Individuel", objectif: "Réaliser une analyse exploratoire complète.", livrable: "Un rapport R Markdown.", format: "", date_rendu: D(3), heure_rendu: "18:00", depot: "", criteres: [], documents: [] });
+  await dv(SAS, { titre: "TP2 SAS noté — PROC MEANS et PROC FREQ", modalite: "Individuel", objectif: "Produire les statistiques descriptives d'une table de ventes avec les procédures SAS adaptées, et commenter les résultats obtenus.", livrable: "Le programme SAS commenté et une page de commentaires des sorties.", format: "Un fichier .sas et un PDF d'une page.", date_rendu: D(9), heure_rendu: "12:00", depot: "Moodle", criteres: [{ critere: "Programme correct et commenté", points: 12 }, { critere: "Commentaire des résultats", points: 8 }], documents: [{ nom: "Sujet du TP2", type: "sujet", lien: "" }] });
+  await dv(SD, { titre: "DM1 — statistiques descriptives d'un jeu de ventes", modalite: "Individuel", objectif: "Décrire la distribution du chiffre d'affaires par catégorie de produits avec les indicateurs et graphiques adaptés.", livrable: "Un document qui présente les indicateurs (moyenne, médiane, écart-type, quartiles) et deux graphiques commentés.", format: "Un PDF de 3 pages maximum.", date_rendu: D(5), heure_rendu: "23:59", depot: "Devoirs Teams", criteres: [{ critere: "Indicateurs justes", points: 8 }, { critere: "Graphiques adaptés", points: 6 }, { critere: "Commentaires", points: 6 }], documents: [{ nom: "ventes_B1.csv", type: "dataset", lien: "" }] });
+  await dv("Professional English", { titre: "Oral presentation — pitch your data project", modalite: "En groupe de 3", objectif: "Present a data project in English in 5 minutes.", livrable: "", format: "", date_rendu: D(24), heure_rendu: "", depot: "", criteres: [], documents: [], statut: "brouillon" });
+
+  await Store.add("annonces", { titre: `Campus fermé ${fmtDay(D(2))}`, contenu: "Le campus d'Angers sera exceptionnellement fermé. Les cours ont lieu à distance : les liens de visio sont indiqués dans chaque matière. Les évaluations prévues ce jour-là sont reportées, les nouvelles dates seront publiées ici.", niveau: "urgent", cible: "Tous", auteur: "Scolarité BDS", role: "admin", date: T + "T08:10", demo: true });
+  await Store.add("annonces", { titre: "TP3 de modèle linéaire : changement de salle", contenu: "Le TP3 aura lieu en salle C110 et non en B204. Pensez à apporter vos scripts du TP2.", niveau: "important", cible: "B2", matiere_id: M[ML], auteur: "Mme Lefèvre", role: "prof", date: D(-1) + "T17:30", demo: true });
+  await Store.add("annonces", { titre: "Forum stages et alternances", contenu: "Une quinzaine d'entreprises seront présentes pour rencontrer les étudiants de B2 et B3. Préparez votre CV et votre portfolio.", niveau: "info", cible: "Tous", auteur: "Scolarité BDS", role: "admin", date: D(-3) + "T10:00", demo: true });
+
+  await Store.add("evenements", { titre: "Fermeture exceptionnelle du campus", kind: "fermeture", date: D(2), fin: "", niveau: "Tous", annee: Y, demo: true });
+  await Store.add("evenements", { titre: "Vacances", kind: "vacances", date: D(11), fin: D(18), niveau: "Tous", annee: Y, demo: true });
+  await Store.add("evenements", { titre: "Partiels du semestre", kind: "examen", date: D(52), fin: D(56), niveau: "Tous", annee: Y, demo: true });
+
+  await Store.add("projets", { titre: "Projet tutoré B2", niveau: "B2", encadrant: "M. Fontaine", annee: Y, demo: true, description: "Un projet de data science mené en groupe sur l'année, avec un commanditaire réel ou fictif : cadrage, collecte, analyse, restitution.",
+    groupes: [{ nom: "Groupe 1 — Prévision des ventes d'une enseigne", membres: "Awa Camara, Moussa Diallo, Léa Martin" }, { nom: "Groupe 2 — Churn d'un opérateur télécom", membres: "Hugo Bernard, Inès Haddad, Karim Mansour" }],
+    jalons: [{ titre: "Choix du sujet et des groupes", date: D(-20), livrable: "Fiche sujet validée", fait: true }, { titre: "Cahier des charges", date: D(6), livrable: "Document de 3 pages : contexte, objectifs, données, planning", fait: false }, { titre: "Revue intermédiaire", date: D(35), livrable: "Point d'étape de 10 minutes", fait: false }, { titre: "Soutenance finale", date: D(80), livrable: "Rapport et présentation de 15 minutes", fait: false }] });
+  await Store.setDoc("annee_active", Y);
+  await Store.setDoc("seeded", true);
+}
+async function clearDemo() {
+  for (const c of ["matieres", "seances", "devoirs", "annonces", "evenements", "projets"]) for (const r of await Store.list(c)) if (r.demo) await Store.remove(c, r.id);
+}
+
+/* ---------------- Accès aux données ---------------- */
+async function matieresMap() { const m = {}; (await Store.list("matieres")).forEach(x => m[x.id] = x); return m; }
+function clarity(d) {
+  const total = (d.criteres || []).reduce((a, c) => a + (+c.points || 0), 0);
+  const items = [
+    ["Objectif expliqué", (d.objectif || "").length >= 30],
+    ["Livrable décrit", !!d.livrable],
+    ["Format attendu", !!d.format],
+    ["Date et heure limites", !!(d.date_rendu && d.heure_rendu)],
+    ["Lieu de dépôt", !!d.depot],
+    ["Barème détaillé", (d.criteres || []).length >= 2 && total > 0],
+    ["Individuel ou en groupe", !!d.modalite],
+    ["Documents utiles joints", (d.documents || []).length > 0 || !!d.sans_document],
+  ];
+  return { items, ok: items.filter(i => i[1]).length, n: items.length, total };
+}
+async function myMatiereIds() {
+  const all = await Store.list("matieres");
+  if (!PROFILE) return [];
+  if (PROFILE.role === "etudiant") return all.filter(m => m.niveau === PROFILE.niveau).map(m => m.id);
+  if (PROFILE.role === "prof") return all.filter(m => m.prof === PROFILE.nom).map(m => m.id);
+  return all.map(m => m.id);
+}
+async function visibleDevoirs() {
+  const Y = await activeYear(), ids = new Set(await myMatiereIds());
+  return (await Store.list("devoirs")).filter(d => d.annee === Y && ids.has(d.matiere_id) && (d.statut === "publie" || isStaff()));
+}
+const canEditMatiere = (m) => isAdmin() || (PROFILE?.role === "prof" && m && m.prof === PROFILE.nom);
+async function getRendus() { return new Set(await Store.getDoc("rendus:" + profileKey(), [])); }
+async function getRead() { return new Set(await Store.getDoc("lu:" + profileKey(), [])); }
+async function visibleAnnonces() {
+  const all = (await Store.list("annonces")).sort((a, b) => b.date.localeCompare(a.date));
+  if (!PROFILE || PROFILE.role !== "etudiant") return all;
+  return all.filter(a => a.cible === "Tous" || a.cible === PROFILE.niveau);
+}
+async function buildEvents(niveau = "Tous") {
+  const Y = await activeYear(), M = await matieresMap(), out = [];
+  const okNiv = (n) => niveau === "Tous" || n === "Tous" || n === niveau;
+  for (const s of await Store.list("seances")) { const m = M[s.matiere_id]; if (s.annee !== Y || !m || !okNiv(m.niveau)) continue; out.push({ date: s.date, heure: s.heure, kind: s.type === "CC" || s.type === "EX" ? "examen" : "cours", titre: `${s.type}${s.numero ? " " + s.numero : ""} · ${m.nom}`, detail: s.titre + (s.salle ? ` · ${s.salle}` : ""), niveau: m.niveau, href: `#/matieres/${m.id}` }); }
+  for (const d of await Store.list("devoirs")) { const m = M[d.matiere_id]; if (d.annee !== Y || !m || !okNiv(m.niveau) || (d.statut !== "publie" && !isStaff()) || !d.date_rendu) continue; out.push({ date: d.date_rendu, heure: d.heure_rendu, kind: "rendu", titre: `Rendu · ${d.titre}`, detail: m.nom, niveau: m.niveau, href: `#/devoirs/${d.id}` }); }
+  for (const p of await Store.list("projets")) { if (p.annee !== Y || !okNiv(p.niveau)) continue; (p.jalons || []).forEach(j => out.push({ date: j.date, kind: "jalon", titre: `${p.titre} · ${j.titre}`, detail: j.livrable, niveau: p.niveau, href: `#/projets/${p.id}` })); }
+  for (const e of await Store.list("evenements")) {
+    if (e.annee !== Y || !okNiv(e.niveau)) continue;
+    const end = e.fin && e.fin > e.date ? e.fin : e.date;
+    for (let d = e.date; d <= end; d = addDays(d, 1)) out.push({ date: d, kind: e.kind, titre: e.titre, detail: e.description || "", niveau: e.niveau, evid: e.id });
+  }
+  return out.sort((a, b) => (a.date + (a.heure || "")).localeCompare(b.date + (b.heure || "")));
+}
+const eventRow = (e) => `<li class="ev"><span class="ev-dot k-${e.kind}" aria-hidden="true"></span><div><a ${e.href ? `href="${e.href}"` : ""} class="ev-title">${esc(e.titre)}</a><div class="meta"><span>${fmtShort(e.date)}${e.heure ? " · " + e.heure : ""}</span><span>${esc(EVENT_KINDS[e.kind])}</span>${e.detail ? `<span>${esc(e.detail)}</span>` : ""}</div></div></li>`;
+
+/* ---------------- Bandeau d'annonces urgentes ---------------- */
+async function pageBanner(el, toolId) {
+  if (toolId === "annonces") return;
+  const read = await getRead(), urgent = (await visibleAnnonces()).filter(a => a.niveau === "urgent" && !read.has(a.id));
+  if (!urgent.length) return;
+  el.innerHTML = urgent.map(a => `<div class="banner" role="alert"><div><b>${esc(a.titre)}</b><p>${esc(a.contenu.length > 160 ? a.contenu.slice(0, 160) + "…" : a.contenu)}</p></div><div class="row"><a class="btn sm" href="#/annonces">Lire</a><button class="btn sm ghost" data-read="${a.id}">J'ai lu</button></div></div>`).join("");
+  el.addEventListener("click", async (e) => { const b = e.target.closest("[data-read]"); if (!b) return; const r = await getRead(); r.add(b.dataset.read); await Store.setDoc("lu:" + profileKey(), [...r]); route(); });
+}
+
+/* ---------------- Tableau de bord ---------------- */
+async function renderDashboard(page) {
+  const Y = await activeYear(), M = await matieresMap(), rendus = await getRendus(), read = await getRead();
+  const devs = (await visibleDevoirs()).filter(d => d.statut === "publie").sort((a, b) => (a.date_rendu + a.heure_rendu).localeCompare(b.date_rendu + b.heure_rendu));
+  const niveau = PROFILE.role === "etudiant" ? PROFILE.niveau : "Tous";
+  const evs = (await buildEvents(niveau)).filter(e => e.date >= today() && e.date <= addDays(today(), 7) && e.kind !== "rendu");
+  const anns = (await visibleAnnonces()).filter(a => !read.has(a.id)).slice(0, 4);
+  const greet = `Bonjour ${esc(PROFILE.nom.split(" ")[0] === "Mme" || PROFILE.nom.split(" ")[0] === "M." || PROFILE.nom.split(" ")[0] === "Ms" ? PROFILE.nom : PROFILE.nom.split(" ")[0])}`;
+  const devCard = (d) => { const m = M[d.matiere_id], n = daysUntil(d.date_rendu), done = rendus.has(d.id), c = clarity(d);
+    return `<li><a class="dash-dev${n <= 2 && !done ? " soon" : ""}" href="#/devoirs/${d.id}"><span class="due"><b>${n < 0 ? "Passé" : n === 0 ? "Auj." : n === 1 ? "Demain" : "J−" + n}</b><span>${fmtShort(d.date_rendu)}</span></span><span class="dd-body"><b>${esc(d.titre)}</b><span class="meta"><span>${esc(m?.nom || "")}</span>${d.heure_rendu ? `<span>avant ${d.heure_rendu}</span>` : ""}${PROFILE.role === "etudiant" ? (done ? `<span class="chip ok">Rendu</span>` : "") : `<span class="chip ${c.ok === c.n ? "ok" : "warn"}">Clarté ${c.ok}/${c.n}</span>`}</span></span></a></li>`; };
+  let main = "", side = "";
+  const upcoming = devs.filter(d => daysUntil(d.date_rendu) >= 0 && (PROFILE.role !== "etudiant" || !rendus.has(d.id))).slice(0, 6);
+  const annBlock = `<section class="sheet"><div class="spread"><h2>Annonces non lues</h2><a class="small" href="#/annonces">Toutes les annonces</a></div>${anns.length ? `<ul class="list">${anns.map(a => `<li><a href="#/annonces" class="ev-title">${esc(a.titre)}</a><div class="meta"><span class="chip lvl-${a.niveau}">${ANN_LEVELS[a.niveau]}</span><span>${esc(a.auteur)}</span><span>${dateFR(a.date)}</span></div></li>`).join("")}</ul>` : `<p class="muted">Tu es à jour.</p>`}</section>`;
+  const weekBlock = `<section class="sheet"><div class="spread"><h2>Les 7 prochains jours</h2><a class="small" href="#/calendrier">Calendrier</a></div>${evs.length ? `<ul class="list evs">${evs.slice(0, 8).map(eventRow).join("")}</ul>` : `<p class="muted">Rien de prévu.</p>`}</section>`;
+
+  if (PROFILE.role === "etudiant") {
+    main = `<section class="sheet"><div class="spread"><h2>À rendre</h2><a class="small" href="#/devoirs">Tous les devoirs</a></div>${upcoming.length ? `<ul class="list dash-devs">${upcoming.map(devCard).join("")}</ul>` : `<p class="muted">Aucun devoir à rendre pour l'instant.</p>`}</section>${weekBlock}`;
+    const answered = devs.flatMap(d => (d.questions || []).filter(q => q.reponse && q.reponse_date >= addDays(today(), -7)).map(q => ({ q, d }))).slice(0, 4);
+    side = annBlock + `<section class="sheet"><h2>Réponses récentes des profs</h2>${answered.length ? `<ul class="list">${answered.map(({ q, d }) => `<li><a href="#/devoirs/${d.id}" class="ev-title">${esc(q.texte)}</a><p class="small" style="margin:4px 0 0">${esc(q.reponse)}</p><div class="meta"><span>${esc(q.repondu_par)}</span><span>${esc(d.titre)}</span></div></li>`).join("")}</ul>` : `<p class="muted">Pas de nouvelle réponse cette semaine.</p>`}</section>`;
+  } else {
+    const pending = devs.flatMap(d => (d.questions || []).filter(q => !q.reponse).map(q => ({ q, d })));
+    const drafts = (await visibleDevoirs()).filter(d => d.statut !== "publie");
+    const unclear = devs.filter(d => { const c = clarity(d); return c.ok < c.n; });
+    main = `<section class="sheet"><div class="spread"><h2>Questions en attente de réponse</h2><span class="chip ${pending.length ? "warn" : "ok"}">${pending.length}</span></div>${pending.length ? `<ul class="list">${pending.map(({ q, d }) => `<li><a href="#/devoirs/${d.id}" class="ev-title">${esc(q.texte)}</a><div class="meta"><span>${esc(q.auteur)}</span><span>${esc(d.titre)}</span><span>${dateFR(q.date)}</span></div></li>`).join("")}</ul>` : `<p class="muted">Toutes les questions ont une réponse.</p>`}</section>
+      <section class="sheet"><div class="spread"><h2>Fiches devoir à compléter</h2><a class="btn sm" href="#/devoirs/nouveau">Nouveau devoir</a></div>${unclear.length || drafts.length ? `<ul class="list">${[...unclear, ...drafts.filter(d => !unclear.includes(d))].map(d => { const c = clarity(d); return `<li class="spread"><div><a href="#/devoirs/${d.id}" class="ev-title">${esc(d.titre)}</a><div class="meta"><span>${esc(M[d.matiere_id]?.nom || "")}</span>${d.statut !== "publie" ? "<span>Brouillon</span>" : ""}<span>Manque : ${c.items.filter(i => !i[1]).map(i => i[0].toLowerCase()).join(", ") || "rien"}</span></div></div><span class="chip ${c.ok === c.n ? "ok" : "warn"}">Clarté ${c.ok}/${c.n}</span></li>`; }).join("")}</ul>` : `<p class="muted">Toutes les fiches publiées sont complètes.</p>`}</section>
+      <section class="sheet"><div class="spread"><h2>Prochains rendus</h2><a class="small" href="#/devoirs">Tous les devoirs</a></div>${upcoming.length ? `<ul class="list dash-devs">${upcoming.map(devCard).join("")}</ul>` : `<p class="muted">Aucun rendu à venir.</p>`}</section>`;
+    let adminBlock = "";
+    if (isAdmin()) { const alerts = await workloadAlerts(Y); adminBlock = `<section class="sheet"><div class="spread"><h2>Charge de travail</h2><a class="small" href="#/administration/charge">Détail</a></div>${alerts.length ? `<ul class="list">${alerts.slice(0, 4).map(a => `<li><b>${esc(a.niveau)} · ${fmtDay(a.date)}</b><p class="small" style="margin:2px 0 0">${a.items.length} rendus le même jour : ${a.items.map(d => esc(d.titre)).join(" ; ")}</p></li>`).join("")}</ul>` : `<p class="muted">Aucun chevauchement de rendus détecté.</p>`}</section>`; }
+    side = adminBlock + annBlock + weekBlock;
+  }
+  page.innerHTML = `<header class="page-head"><h1>${greet}</h1><p>${PROFILE.role === "etudiant" ? `Promo ${PROFILE.niveau} · année ${Y}` : PROFILE.role === "prof" ? `Espace professeur · année ${Y}` : `Administration de la formation · année ${Y}`}</p></header><div class="grid g-side"><div class="stack">${main}</div><div class="stack">${side}</div></div>`;
+}
+
+/* ---------------- Annonces ---------------- */
+async function annoncesPage(page) {
+  const draw = async () => {
+    const list = await visibleAnnonces(), read = await getRead(), M = await matieresMap();
+    const mine = PROFILE.role === "prof" ? Object.values(M).filter(m => m.prof === PROFILE.nom) : Object.values(M);
+    const order = { urgent: 0, important: 1, info: 2 };
+    list.sort((a, b) => (read.has(a.id) - read.has(b.id)) || (order[a.niveau] - order[b.niveau]) || b.date.localeCompare(a.date));
+    page.innerHTML = `<header class="page-head"><h1>Annonces</h1><p>Les informations officielles de la formation, classées par importance. Les annonces urgentes restent affichées en haut de chaque page tant que tu ne les as pas lues.</p></header>
+      <div class="grid ${isStaff() ? "g-side" : ""}"><div class="stack">${list.length ? list.map(a => `<article class="sheet ann ann-${a.niveau}${read.has(a.id) ? " is-read" : ""}" data-id="${a.id}"><div class="spread"><div class="chips"><span class="chip lvl-${a.niveau}">${ANN_LEVELS[a.niveau]}</span><span class="chip">${a.cible === "Tous" ? "Toutes les promos" : esc(a.cible)}</span>${a.matiere_id && M[a.matiere_id] ? `<span class="chip">${esc(M[a.matiere_id].nom)}</span>` : ""}</div><span class="small muted">${dateFR(a.date)}</span></div>
+        <h2 style="margin:10px 0 6px">${esc(a.titre)}</h2><p>${nl2br(a.contenu)}</p><div class="spread" style="align-items:center"><span class="small muted">${esc(a.auteur)} · ${ROLES[a.role] || ""}</span><div class="row">${read.has(a.id) ? `<span class="small muted">Lu</span>` : `<button class="btn sm ghost" data-read>Marquer comme lu</button>`}${isAdmin() || (PROFILE.role === "prof" && a.auteur === PROFILE.nom) ? `<button class="btn sm danger" data-del>Supprimer</button>` : ""}</div></div></article>`).join("") : `<div class="sheet">${emptyState("Aucune annonce", "Les annonces de la scolarité et des professeurs apparaîtront ici.")}</div>`}</div>
+      ${isStaff() ? `<form class="sheet stack" id="af" style="align-self:start"><h2>Publier une annonce</h2><label class="field">Titre<input type="text" name="titre" required></label><label class="field">Message<textarea name="contenu" rows="5" required></textarea></label>
+        <label class="field">Importance<select name="niveau">${Object.entries(ANN_LEVELS).map(([k, v]) => `<option value="${k}"${k === "info" ? " selected" : ""}>${v}</option>`).join("")}</select></label>
+        <label class="field">Destinataires<select name="cible"><option value="Tous">Toutes les promos</option>${opts(PROMOS)}</select></label>
+        <label class="field">Matière concernée <span class="hint">(optionnel)</span><select name="matiere_id"><option value="">Aucune</option>${mine.map(m => `<option value="${m.id}">${esc(m.niveau)} · ${esc(m.nom)}</option>`).join("")}</select></label>
+        <p class="small muted" style="margin:0">« Urgent » affiche un bandeau en haut de toutes les pages jusqu'à lecture : à réserver aux vraies urgences.</p><button class="btn">Publier</button></form>` : ""}</div>`;
+    $("#af")?.addEventListener("submit", async (e) => { e.preventDefault(); const d = formData(e.target); await Store.add("annonces", { ...d, auteur: PROFILE.nom, role: PROFILE.role, date: new Date().toISOString().slice(0, 16) }); toast("Annonce publiée"); draw(); });
+  };
+  page.addEventListener("click", async (e) => {
+    const art = e.target.closest("[data-id]"); if (!art) return;
+    if (e.target.closest("[data-read]")) { const r = await getRead(); r.add(art.dataset.id); await Store.setDoc("lu:" + profileKey(), [...r]); await renderNav("annonces"); draw(); }
+    if (e.target.closest("[data-del]") && confirm("Supprimer cette annonce ?")) { await Store.remove("annonces", art.dataset.id); toast("Annonce supprimée"); draw(); }
+  });
+  draw();
+}
+tool({ id: "annonces", title: "Annonces", group: "Ma formation", icon: "bell", short: "", page: annoncesPage,
+  badge: async () => { if (!PROFILE) return 0; const r = await getRead(); return (await visibleAnnonces()).filter(a => !r.has(a.id)).length; }, badgeTitle: "Annonces non lues" });
+
+/* ---------------- Calendrier ---------------- */
+async function calendarPage(page) {
+  let cur = new Date(today() + "T12:00:00"); cur.setDate(1);
+  let niveau = PROFILE.role === "etudiant" ? PROFILE.niveau : "Tous", sel = today();
+  const draw = async () => {
+    const evs = await buildEvents(niveau), byDay = {}; evs.forEach(e => (byDay[e.date] ||= []).push(e));
+    const y = cur.getFullYear(), m = cur.getMonth(), first = new Date(y, m, 1, 12), start = new Date(first); start.setDate(1 - ((first.getDay() + 6) % 7));
+    const cells = Array.from({ length: 42 }, (_, i) => { const d = new Date(start); d.setDate(start.getDate() + i); return isoLocal(d); });
+    const monthLabel = first.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+    const dayList = byDay[sel] || [];
+    page.innerHTML = `<header class="page-head"><h1>Calendrier</h1><p>Cours, rendus, contrôles, jalons de projets et dates de la scolarité, au même endroit.</p></header>
+      <div class="grid g-side"><div class="sheet"><div class="spread" style="align-items:center;margin-bottom:12px"><div class="row"><button class="icon-btn" id="prev" aria-label="Mois précédent">‹</button><h2 style="margin:0;min-width:11ch;text-transform:capitalize">${monthLabel}</h2><button class="icon-btn" id="next" aria-label="Mois suivant">›</button><button class="btn sm ghost" id="tod">Aujourd'hui</button></div>
+        <label class="field">Promo<select id="niv"><option value="Tous">Toutes</option>${opts(PROMOS, niveau)}</select></label></div>
+        <div class="cal" role="grid" aria-label="${monthLabel}"><div class="cal-h" role="row">${["lun", "mar", "mer", "jeu", "ven", "sam", "dim"].map(d => `<span role="columnheader">${d}</span>`).join("")}</div>
+        <div class="cal-b">${cells.map(c => { const list = byDay[c] || [], inMonth = c.slice(5, 7) === String(m + 1).padStart(2, "0"); return `<button class="cal-c${inMonth ? "" : " out"}${c === today() ? " today" : ""}${c === sel ? " sel" : ""}" data-d="${c}" role="gridcell" aria-label="${fmtDay(c)}, ${list.length} élément${list.length > 1 ? "s" : ""}"><span class="cal-n">${+c.slice(8)}</span>${list.slice(0, 3).map(e => `<span class="cal-e k-${e.kind}">${esc(e.titre.replace(/^Rendu · /, "↦ "))}</span>`).join("")}${list.length > 3 ? `<span class="cal-more">+${list.length - 3}</span>` : ""}</button>`; }).join("")}</div></div>
+        <div class="legend">${["cours", "rendu", "examen", "jalon", "vacances", "fermeture"].map(k => `<span><span class="ev-dot k-${k}"></span>${EVENT_KINDS[k]}</span>`).join("")}</div></div>
+      <div class="stack"><div class="sheet"><h2 style="text-transform:capitalize">${fmtDay(sel)}</h2>${dayList.length ? `<ul class="list evs">${dayList.map(eventRow).join("")}</ul>` : `<p class="muted">Rien ce jour-là.</p>`}</div>
+      ${isStaff() ? `<form class="sheet stack" id="ef"><h2>Ajouter une date</h2><label class="field">Intitulé<input type="text" name="titre" required placeholder="Ex. : Rattrapage de modèle linéaire"></label><label class="field">Type<select name="kind">${["examen", "vacances", "fermeture", "autre"].map(k => `<option value="${k}">${EVENT_KINDS[k]}</option>`).join("")}</select></label><div class="row"><label class="field" style="flex:1">Du<input type="date" name="date" value="${sel}" required></label><label class="field" style="flex:1">Au <span class="hint">(optionnel)</span><input type="date" name="fin"></label></div><label class="field">Promo<select name="niveau"><option value="Tous">Toutes</option>${opts(PROMOS)}</select></label><button class="btn">Ajouter au calendrier</button></form>` : ""}</div></div>`;
+    $("#ef")?.addEventListener("submit", async (e) => { e.preventDefault(); await Store.add("evenements", { ...formData(e.target), annee: await activeYear() }); toast("Date ajoutée"); draw(); });
+  };
+  page.addEventListener("click", (e) => {
+    const c = e.target.closest("[data-d]"); if (c) { sel = c.dataset.d; return draw(); }
+    if (e.target.closest("#prev")) { cur.setMonth(cur.getMonth() - 1); draw(); }
+    if (e.target.closest("#next")) { cur.setMonth(cur.getMonth() + 1); draw(); }
+    if (e.target.closest("#tod")) { cur = new Date(today() + "T12:00:00"); cur.setDate(1); sel = today(); draw(); }
+  });
+  page.addEventListener("change", (e) => { if (e.target.id === "niv") { niveau = e.target.value; draw(); } });
+  draw();
+}
+tool({ id: "calendrier", title: "Calendrier", group: "Ma formation", icon: "calendar", short: "", page: calendarPage });
+
+/* ---------------- Éditeur de lignes (documents, critères…) ---------------- */
+function rowsEditor(name, fields, rows) {
+  const row = (r = {}) => `<div class="er-row">${fields.map(f => f.type === "select" ? `<select data-f="${f.k}" aria-label="${f.label}">${Object.entries(f.options).map(([k, v]) => `<option value="${k}"${r[f.k] === k ? " selected" : ""}>${v}</option>`).join("")}</select>` : `<input type="${f.type || "text"}" data-f="${f.k}" value="${esc(r[f.k] ?? "")}" placeholder="${f.label}" aria-label="${f.label}" style="${f.w ? `flex:0 0 ${f.w}` : "flex:1"}">`).join("")}<button type="button" class="btn sm danger" data-er-rm aria-label="Retirer la ligne">×</button></div>`;
+  return `<div class="er" data-rows="${name}" data-tpl="${esc(row())}">${(rows.length ? rows : []).map(row).join("")}<button type="button" class="btn sm ghost" data-er-add>Ajouter une ligne</button></div>`;
+}
+function readRows(root, name) {
+  return $$(`[data-rows="${name}"] .er-row`, root).map(r => { const o = {}; $$("[data-f]", r).forEach(i => o[i.dataset.f] = i.value.trim()); return o; }).filter(o => o.nom || o.critere || o.lien);
+}
+document.addEventListener("click", (e) => {
+  const add = e.target.closest("[data-er-add]"); if (add) { add.insertAdjacentHTML("beforebegin", add.parentElement.dataset.tpl); add.previousElementSibling.querySelector("input")?.focus(); add.closest("form")?.dispatchEvent(new Event("input", { bubbles: true })); }
+  const rm = e.target.closest("[data-er-rm]"); if (rm) { const f = rm.closest("form"); rm.parentElement.remove(); f?.dispatchEvent(new Event("input", { bubbles: true })); }
+});
+const DOC_FIELDS = [{ k: "nom", label: "Nom du document" }, { k: "type", label: "Type", type: "select", options: DOC_TYPES }, { k: "lien", label: "Lien Teams / SharePoint", type: "url" }];
+
+/* ---------------- Matières ---------------- */
+async function matieresPage(page, id) {
+  if (id) return matiereDetail(page, id);
+  const all = await Store.list("matieres"), mineIds = new Set(await myMatiereIds()), Y = await activeYear();
+  const seances = (await Store.list("seances")).filter(s => s.annee === Y), devs = (await Store.list("devoirs")).filter(d => d.annee === Y && d.statut === "publie");
+  let niveau = PROFILE.role === "etudiant" ? PROFILE.niveau : "Tous", onlyMine = PROFILE.role === "prof";
+  const draw = () => {
+    const list = all.filter(m => (niveau === "Tous" || m.niveau === niveau) && (!onlyMine || mineIds.has(m.id)));
+    const groups = {}; list.forEach(m => (groups[`${m.niveau} · ${m.semestre}`] ||= []).push(m));
+    page.innerHTML = `<header class="page-head"><h1>Matières</h1><p>Chaque matière garde la même place d'une année sur l'autre, avec ses séances, ses documents rangés par type et ses devoirs.</p></header>
+      <div class="row" style="margin-bottom:16px"><div class="seg" id="nv">${["Tous", ...PROMOS].map(n => `<button aria-pressed="${n === niveau}">${n === "Tous" ? "Toutes les promos" : n}</button>`).join("")}</div>${PROFILE.role === "prof" ? `<label class="check"><input type="checkbox" id="mine"${onlyMine ? " checked" : ""}><span>Seulement mes matières</span></label>` : ""}</div>
+      ${Object.keys(groups).sort().map(g => `<section style="margin-bottom:26px"><h2 class="sec-title">${g}</h2><div class="mat-grid">${groups[g].map(m => { const ns = seances.filter(s => s.matiere_id === m.id), nd = devs.filter(d => d.matiere_id === m.id && daysUntil(d.date_rendu) >= 0).length, next = ns.filter(s => s.date >= today()).sort((a, b) => a.date.localeCompare(b.date))[0];
+        return `<a class="mat-card" href="#/matieres/${m.id}"><b>${esc(m.nom)}</b><span class="muted small">${esc(m.prof || "Professeur à affecter")}</span><span class="meta">${ns.length ? `<span>${ns.length} séance${ns.length > 1 ? "s" : ""}</span>` : "<span>Pas encore de séance</span>"}${nd ? `<span class="chip warn">${nd} devoir${nd > 1 ? "s" : ""} à rendre</span>` : ""}</span>${next ? `<span class="small">Prochaine : ${next.type}${next.numero ? " " + next.numero : ""}, ${fmtShort(next.date)}</span>` : ""}</a>`; }).join("")}</div></section>`).join("") || `<div class="sheet">${emptyState("Aucune matière", isAdmin() ? "Ajoute les matières dans Administration › Matières." : "Aucune matière pour ce filtre.")}</div>`}`;
+  };
+  page.addEventListener("click", (e) => { const b = e.target.closest("#nv button"); if (b) { niveau = b.textContent.startsWith("Toutes") ? "Tous" : b.textContent; draw(); } });
+  page.addEventListener("change", (e) => { if (e.target.id === "mine") { onlyMine = e.target.checked; draw(); } });
+  draw();
+}
+async function matiereDetail(page, id) {
+  const m = await Store.get("matieres", id); if (!m) { page.innerHTML = `<div class="sheet">${emptyState("Matière introuvable", "Elle a peut-être été supprimée.", `<a class="btn" href="#/matieres">Toutes les matières</a>`)}</div>`; return; }
+  const Y = await activeYear(), edit = canEditMatiere(m);
+  let filter = "Tous";
+  const draw = async () => {
+    const seances = (await Store.list("seances")).filter(s => s.matiere_id === id && s.annee === Y).sort((a, b) => (a.date + a.heure).localeCompare(b.date + b.heure));
+    const devs = (await Store.list("devoirs")).filter(d => d.matiere_id === id && d.annee === Y && (d.statut === "publie" || isStaff()));
+    const shown = seances.filter(s => filter === "Tous" || s.type === filter), types = [...new Set(seances.map(s => s.type))];
+    const allDocs = seances.flatMap(s => (s.documents || []).map(d => ({ ...d, s })));
+    page.innerHTML = `<p class="crumbs"><a href="#/matieres">Matières</a> › ${esc(m.niveau)} · ${esc(m.semestre)}</p>
+      <header class="page-head"><h1>${esc(m.nom)}</h1><p>${esc(m.prof || "Professeur à affecter")}${m.description ? " · " + esc(m.description) : ""}</p>${m.teams ? `<p style="margin-top:8px"><a class="btn sm ghost" href="${esc(m.teams)}" target="_blank" rel="noopener">Ouvrir le canal Teams</a></p>` : ""}</header>
+      <div class="grid g-side"><div class="stack">
+        <section class="sheet"><div class="spread"><h2>Séances ${Y}</h2><div class="seg" id="tf">${["Tous", ...types].map(t => `<button aria-pressed="${t === filter}" data-t="${t}">${t === "Tous" ? "Toutes" : t}</button>`).join("")}</div></div>
+          ${shown.length ? `<ol class="timeline">${shown.map(s => `<li class="${s.date < today() ? "past" : s.date === today() ? "now" : ""}" data-id="${s.id}"><div class="tl-date"><b>${fmtShort(s.date)}</b><span>${esc(s.heure || "")}${s.salle ? " · " + esc(s.salle) : ""}</span></div><div class="tl-body"><div class="row" style="gap:8px"><span class="chip st-${s.type}">${s.type}${s.numero ? " " + s.numero : ""}</span><b>${esc(s.titre)}</b></div>
+            ${(s.documents || []).length ? `<ul class="docs">${s.documents.map(d => `<li>${docChip(d.type)} ${docLink(d)}</li>`).join("")}</ul>` : `<p class="small muted" style="margin:6px 0 0">Aucun document pour cette séance.</p>`}${edit ? `<div class="row" style="margin-top:8px"><button class="link-btn small" data-edit-s>Modifier</button><button class="link-btn small" data-del-s>Supprimer</button></div>` : ""}</div></li>`).join("")}</ol>` : `<p class="muted">Aucune séance${filter === "Tous" ? "" : " de ce type"} pour l'instant.</p>`}</section>
+        ${edit ? `<form class="sheet stack" id="sf"><h2 id="sf-title">Ajouter une séance</h2><input type="hidden" name="id"><div class="form-grid"><label class="field">Type<select name="type">${Object.entries(SEANCE_TYPES).map(([k, v]) => `<option value="${k}">${k} — ${v}</option>`).join("")}</select></label><label class="field">Numéro<input type="number" name="numero" min="1" value="1"></label>
+          <label class="field full">Intitulé<input type="text" name="titre" required placeholder="Ex. : Régression multiple sur URBNAT"></label><label class="field">Date<input type="date" name="date" required value="${today()}"></label><label class="field">Heure<input type="time" name="heure" value="08:30"></label><label class="field full">Salle ou lien visio<input type="text" name="salle"></label></div>
+          <div class="field">Documents <span class="hint">(un par ligne : son type indique à quoi il sert)</span>${rowsEditor("docs", DOC_FIELDS, [])}</div><div class="row"><button class="btn">Enregistrer la séance</button><button type="button" class="btn ghost" id="sf-reset" hidden>Annuler la modification</button></div></form>` : ""}
+      </div><div class="stack">
+        <section class="sheet"><div class="spread"><h2>Devoirs</h2>${edit ? `<a class="btn sm" href="#/devoirs/nouveau/${id}">Nouveau devoir</a>` : ""}</div>${devs.length ? `<ul class="list">${devs.sort((a, b) => a.date_rendu.localeCompare(b.date_rendu)).map(d => `<li><a class="ev-title" href="#/devoirs/${d.id}">${esc(d.titre)}</a><div class="meta"><span>${d.date_rendu ? `Pour le ${fmtShort(d.date_rendu)}${d.heure_rendu ? " à " + d.heure_rendu : ""}` : "Date à fixer"}</span>${d.statut !== "publie" ? "<span>Brouillon</span>" : `<span>${countdown(d.date_rendu)}</span>`}</div></li>`).join("")}</ul>` : `<p class="muted">Aucun devoir.</p>`}</section>
+        <section class="sheet"><h2>Tous les documents</h2>${allDocs.length ? Object.entries(DOC_TYPES).filter(([k]) => allDocs.some(d => d.type === k)).map(([k, v]) => `<h3 class="small" style="margin:12px 0 4px">${v}</h3><ul class="plain small">${allDocs.filter(d => d.type === k).map(d => `<li>${docLink(d)} <span class="muted">· ${d.s.type}${d.s.numero ? " " + d.s.numero : ""}</span></li>`).join("")}</ul>`).join("") : `<p class="muted">Aucun document.</p>`}</section>
+        ${edit ? `<form class="sheet stack" id="mf"><h2>Informations de la matière</h2><label class="field">Lien du canal Teams<input type="url" name="teams" value="${esc(m.teams || "")}" placeholder="https://teams.microsoft.com/…"></label><label class="field">Description<textarea name="description" rows="3">${esc(m.description || "")}</textarea></label><button class="btn ghost">Enregistrer</button></form>` : ""}
+      </div></div>`;
+    const sf = $("#sf");
+    if (sf) {
+      sf.addEventListener("submit", async (e) => { e.preventDefault(); const d = formData(sf); const rec = { matiere_id: id, annee: Y, type: d.type, numero: +d.numero || null, titre: d.titre, date: d.date, heure: d.heure, salle: d.salle, documents: readRows(sf, "docs") }; if (d.id) await Store.update("seances", d.id, rec); else await Store.add("seances", rec); toast(d.id ? "Séance modifiée" : "Séance ajoutée"); draw(); });
+      $("#sf-reset").onclick = () => draw();
+    }
+    $("#mf")?.addEventListener("submit", async (e) => { e.preventDefault(); Object.assign(m, formData(e.target)); await Store.update("matieres", id, formData(e.target)); toast("Matière mise à jour"); draw(); });
+  };
+  page.addEventListener("click", async (e) => {
+    const t = e.target.closest("#tf button"); if (t) { filter = t.dataset.t; return draw(); }
+    const li = e.target.closest("[data-id]"); if (!li) return;
+    if (e.target.closest("[data-del-s]") && confirm("Supprimer cette séance et la liste de ses documents ?")) { await Store.remove("seances", li.dataset.id); toast("Séance supprimée"); draw(); }
+    if (e.target.closest("[data-edit-s]")) {
+      const s = await Store.get("seances", li.dataset.id), f = $("#sf");
+      for (const k of ["id", "type", "numero", "titre", "date", "heure", "salle"]) f.elements[k].value = s[k] ?? "";
+      $('[data-rows="docs"]', f).outerHTML = rowsEditor("docs", DOC_FIELDS, s.documents || []);
+      $("#sf-title").textContent = "Modifier la séance"; $("#sf-reset").hidden = false; f.scrollIntoView({ behavior: "smooth" }); f.elements.titre.focus();
+    }
+  });
+  draw();
+}
+tool({ id: "matieres", title: "Matières", group: "Ma formation", icon: "courses", short: "", page: matieresPage });
+
+/* ---------------- Devoirs ---------------- */
+async function devoirsPage(page, id, sub) {
+  if (id === "nouveau") return devoirForm(page, null, sub);
+  if (id && sub === "modifier") return devoirForm(page, id);
+  if (id) return devoirDetail(page, id);
+  const M = await matieresMap(), rendus = await getRendus();
+  let show = "avenir";
+  const draw = async () => {
+    const all = (await visibleDevoirs()).sort((a, b) => (a.date_rendu || "9").localeCompare(b.date_rendu || "9"));
+    const list = all.filter(d => show === "tous" || (show === "avenir" ? (!d.date_rendu || daysUntil(d.date_rendu) >= 0) && !(PROFILE.role === "etudiant" && rendus.has(d.id)) : show === "rendus" ? rendus.has(d.id) : show === "brouillons" ? d.statut !== "publie" : daysUntil(d.date_rendu) < 0));
+    const filters = PROFILE.role === "etudiant" ? [["avenir", "À rendre"], ["rendus", "Rendus"], ["passes", "Échéance passée"], ["tous", "Tous"]] : [["avenir", "À venir"], ["brouillons", "Brouillons"], ["passes", "Échéance passée"], ["tous", "Tous"]];
+    page.innerHTML = `<header class="page-head"><h1>Devoirs</h1><p>Chaque devoir suit la même fiche : objectif, livrable, format, date, lieu de dépôt et barème. Une question sur la consigne ? Pose-la sur la fiche : la réponse sera visible par toute la promo.</p></header>
+      <div class="row" style="margin-bottom:16px"><div class="seg" id="df">${filters.map(([k, v]) => `<button aria-pressed="${k === show}" data-k="${k}">${v}</button>`).join("")}</div>${isStaff() ? `<a class="btn sm" href="#/devoirs/nouveau" style="margin-left:auto">Nouveau devoir</a>` : ""}</div>
+      ${list.length ? `<div class="sheet"><ul class="list">${list.map(d => { const m = M[d.matiere_id], c = clarity(d), open = (d.questions || []).filter(q => !q.reponse).length;
+        return `<li class="spread"><div style="flex:1;min-width:220px"><a class="ev-title" href="#/devoirs/${d.id}">${esc(d.titre)}</a><div class="meta"><span>${esc(m?.niveau || "")} · ${esc(m?.nom || "")}</span><span>${esc(d.modalite || "")}</span>${(d.questions || []).length ? `<span>${d.questions.length} question${d.questions.length > 1 ? "s" : ""}${open ? `, ${open} sans réponse` : ""}</span>` : ""}</div></div>
+        <div class="row" style="gap:8px">${d.statut !== "publie" ? `<span class="chip">Brouillon</span>` : ""}${isStaff() ? `<span class="chip ${c.ok === c.n ? "ok" : "warn"}">Clarté ${c.ok}/${c.n}</span>` : rendus.has(d.id) ? `<span class="chip ok">Rendu</span>` : ""}<span class="due-pill${d.date_rendu && daysUntil(d.date_rendu) <= 2 && daysUntil(d.date_rendu) >= 0 ? " soon" : ""}">${d.date_rendu ? `${fmtShort(d.date_rendu)}${d.heure_rendu ? " · " + d.heure_rendu : ""}` : "Date à fixer"}</span></div></li>`; }).join("")}</ul></div>`
+      : `<div class="sheet">${emptyState(show === "avenir" ? "Rien à rendre" : "Aucun devoir ici", show === "avenir" ? "Profites-en pour avancer sur tes projets ou réviser." : "Change de filtre pour voir les autres devoirs.")}</div>`}`;
+  };
+  page.addEventListener("click", (e) => { const b = e.target.closest("#df button"); if (b) { show = b.dataset.k; draw(); } });
+  draw();
+}
+async function devoirDetail(page, id) {
+  const draw = async () => {
+    const d = await Store.get("devoirs", id), M = await matieresMap(); const m = d && M[d.matiere_id];
+    if (!d || (d.statut !== "publie" && !isStaff())) { page.innerHTML = `<div class="sheet">${emptyState("Devoir introuvable", "Il a peut-être été retiré ou n'est pas encore publié.", `<a class="btn" href="#/devoirs">Tous les devoirs</a>`)}</div>`; return; }
+    const edit = canEditMatiere(m), c = clarity(d), rendus = await getRendus(), n = d.date_rendu ? daysUntil(d.date_rendu) : null;
+    const field = (label, val, missing) => `<div class="fiche-row"><dt>${label}</dt><dd>${val ? val : `<span class="missing">${missing || "Non précisé par le professeur"}</span>`}</dd></div>`;
+    page.innerHTML = `<p class="crumbs"><a href="#/devoirs">Devoirs</a> › <a href="#/matieres/${m.id}">${esc(m.nom)}</a></p>
+      <header class="page-head"><h1>${esc(d.titre)}</h1><p>${esc(m.niveau)} · ${esc(m.nom)} · ${esc(m.prof || "")}${d.statut !== "publie" ? " · <b>Brouillon, invisible pour les étudiants</b>" : ""}</p></header>
+      <div class="grid g-side"><div class="stack">
+        <section class="sheet"><h2>Fiche du devoir</h2><dl class="fiche">
+          ${field("Objectif", d.objectif ? nl2br(d.objectif) : "")}
+          ${field("Ce que tu rends", d.livrable ? nl2br(d.livrable) : "")}
+          ${field("Format", d.format ? esc(d.format) : "")}
+          ${field("Modalité", d.modalite ? esc(d.modalite) : "")}
+          ${field("Date limite", d.date_rendu ? `<b>${fmtDay(d.date_rendu)}${d.heure_rendu ? ` à ${d.heure_rendu}` : ""}</b>` : "", "Date à fixer")}
+          ${field("Où déposer", d.depot ? esc(d.depot) + (d.depot_detail ? ` — ${esc(d.depot_detail)}` : "") : "")}
+          ${d.complements ? field("Précisions", nl2br(d.complements)) : ""}
+        </dl>
+        <h3 style="margin-top:18px">Barème${c.total ? ` sur ${c.total} points` : ""}</h3>${(d.criteres || []).length ? `<table class="data bareme"><tbody>${d.criteres.map(k => `<tr><td>${esc(k.critere)}</td><td class="num">${esc(k.points)} pt${+k.points > 1 ? "s" : ""}</td></tr>`).join("")}</tbody></table>` : `<p class="missing">Barème non communiqué. N'hésite pas à poser la question ci-dessous.</p>`}</section>
+        <section class="sheet" id="questions"><h2>Questions sur la consigne</h2><p class="small muted">Avant de poser une question, vérifie qu'elle n'a pas déjà été posée : les réponses du professeur sont visibles par toute la promo.</p>
+          ${(d.questions || []).length ? `<ul class="qa">${d.questions.map(q => `<li data-q="${q.id}"><div class="q"><span class="avatar">${initials(q.auteur)}</span><div><b>${esc(q.auteur)}</b> <span class="small muted">${dateFR(q.date)}</span><p>${nl2br(q.texte)}</p></div></div>
+            ${q.reponse ? `<div class="a"><span class="avatar prof">${initials(q.repondu_par)}</span><div><b>${esc(q.repondu_par)}</b> <span class="small muted">a répondu ${dateFR(q.reponse_date)}</span><p>${nl2br(q.reponse)}</p></div></div>` : edit ? `<form class="a-form row" data-answer><textarea name="reponse" rows="2" required placeholder="Ta réponse, visible par toute la promo" style="flex:1"></textarea><button class="btn sm">Répondre</button></form>` : `<p class="small muted waiting">En attente de réponse du professeur</p>`}</li>`).join("")}</ul>` : `<p class="muted">Aucune question pour l'instant.</p>`}
+          ${PROFILE.role === "etudiant" ? `<form class="stack" id="qf" style="margin-top:14px"><label class="field">Ta question<textarea name="texte" rows="3" required placeholder="Sois précis : cite la partie de la consigne qui pose problème."></textarea></label><button class="btn sm" style="align-self:flex-start">Poser la question</button></form>` : ""}</section>
+      </div><div class="stack">
+        <section class="sheet due-card${n !== null && n <= 2 && n >= 0 ? " soon" : ""}"><span class="small muted">Échéance</span><b class="big">${n === null ? "À fixer" : countdown(d.date_rendu)}</b>${d.date_rendu ? `<span>${fmtDay(d.date_rendu)}${d.heure_rendu ? " · " + d.heure_rendu : ""}</span>` : ""}
+          ${PROFILE.role === "etudiant" ? `<label class="check" style="margin-top:12px"><input type="checkbox" id="rendu"${rendus.has(id) ? " checked" : ""}><span>J'ai rendu ce devoir</span></label>` : ""}</section>
+        <section class="sheet"><h2>Documents</h2>${(d.documents || []).length ? `<ul class="docs">${d.documents.map(x => `<li>${docChip(x.type)} ${docLink(x)}</li>`).join("")}</ul>` : `<p class="muted small">Aucun document joint.</p>`}</section>
+        ${isStaff() ? `<section class="sheet"><div class="spread"><h2>Clarté de la consigne</h2><span class="chip ${c.ok === c.n ? "ok" : "warn"}">${c.ok}/${c.n}</span></div><ul class="clar">${c.items.map(([k, v]) => `<li class="${v ? "on" : "off"}">${k}</li>`).join("")}</ul>${edit ? `<div class="row" style="margin-top:12px"><a class="btn sm" href="#/devoirs/${id}/modifier">Modifier la fiche</a>${d.statut !== "publie" ? `<button class="btn sm ghost" id="pub">Publier</button>` : ""}<button class="btn sm danger" id="del">Supprimer</button></div>` : ""}</section>` : ""}
+      </div></div>`;
+    $("#qf")?.addEventListener("submit", async (e) => { e.preventDefault(); const t = e.target.texte.value.trim(); if (!t) return; await Store.update("devoirs", id, { questions: [...(d.questions || []), { id: Date.now().toString(36), auteur: PROFILE.nom, texte: t, date: new Date().toISOString().slice(0, 16) }] }); toast("Question envoyée au professeur"); draw(); });
+    $$("[data-answer]").forEach(f => f.addEventListener("submit", async (e) => { e.preventDefault(); const qid = f.closest("[data-q]").dataset.q; const qs = d.questions.map(q => q.id === qid ? { ...q, reponse: f.reponse.value.trim(), repondu_par: PROFILE.nom, reponse_date: new Date().toISOString().slice(0, 16) } : q); await Store.update("devoirs", id, { questions: qs }); toast("Réponse publiée pour toute la promo"); draw(); }));
+    $("#rendu")?.addEventListener("change", async (e) => { const r = await getRendus(); e.target.checked ? r.add(id) : r.delete(id); await Store.setDoc("rendus:" + profileKey(), [...r]); toast(e.target.checked ? "Noté comme rendu" : "Noté comme non rendu"); });
+    $("#pub")?.addEventListener("click", async () => { if (c.ok < c.n && !confirm(`La fiche n'est complète qu'à ${c.ok}/${c.n}. Publier quand même ?`)) return; await Store.update("devoirs", id, { statut: "publie" }); toast("Devoir publié"); draw(); });
+    $("#del")?.addEventListener("click", async () => { if (!confirm("Supprimer ce devoir et ses questions ?")) return; await Store.remove("devoirs", id); toast("Devoir supprimé"); navigate("#/devoirs"); });
+  };
+  draw();
+}
+async function devoirForm(page, id, presetMatiere) {
+  const d = id ? await Store.get("devoirs", id) : { matiere_id: presetMatiere || "", modalite: "Individuel", criteres: [], documents: [], heure_rendu: "23:59", statut: "brouillon" };
+  const all = (await Store.list("matieres")).filter(canEditMatiere).sort((a, b) => (a.niveau + a.nom).localeCompare(b.niveau + b.nom));
+  if (!all.length) { page.innerHTML = `<div class="sheet">${emptyState("Aucune matière à ton nom", "Seuls le professeur d'une matière et l'administration peuvent y créer des devoirs. Vérifie ton profil.")}</div>`; return; }
+  const modOpts = ["Individuel", "En binôme", "En groupe de 3", "En groupe de 4 ou plus"];
+  page.innerHTML = `<p class="crumbs"><a href="#/devoirs">Devoirs</a> › ${id ? "Modifier" : "Nouveau"}</p><header class="page-head"><h1>${id ? "Modifier la fiche" : "Nouvelle fiche devoir"}</h1><p>Remplis chaque rubrique : c'est ce qui évite les incompréhensions et les questions répétées. L'indicateur de clarté se met à jour pendant que tu écris.</p></header>
+    <div class="grid g-side"><form class="sheet stack" id="dfm">
+      <div class="form-grid"><label class="field full">Matière<select name="matiere_id">${all.map(m => `<option value="${m.id}"${m.id === d.matiere_id ? " selected" : ""}>${esc(m.niveau)} · ${esc(m.nom)}</option>`).join("")}</select></label>
+      <label class="field full">Titre<input type="text" name="titre" required value="${esc(d.titre || "")}" placeholder="Ex. : TP3 noté — régression multiple sur URBNAT"></label>
+      <label class="field full">Objectif <span class="hint">: pourquoi ce travail, ce que l'étudiant doit montrer</span><textarea name="objectif" rows="3">${esc(d.objectif || "")}</textarea></label>
+      <label class="field full">Ce que l'étudiant rend<textarea name="livrable" rows="3" placeholder="Ex. : un compte rendu présentant le modèle final, l'interprétation des coefficients…">${esc(d.livrable || "")}</textarea></label>
+      <label class="field full">Format attendu<input type="text" name="format" value="${esc(d.format || "")}" placeholder="Ex. : un PDF de 6 pages maximum + le script .R, nommés NOM_TP3"></label>
+      <label class="field">Modalité<select name="modalite">${opts(modOpts, d.modalite)}</select></label><span></span>
+      <label class="field">Date limite<input type="date" name="date_rendu" value="${esc(d.date_rendu || "")}"></label><label class="field">Heure limite<input type="time" name="heure_rendu" value="${esc(d.heure_rendu || "")}"></label>
+      <label class="field">Lieu de dépôt<select name="depot"><option value="">À préciser</option>${opts(DEPOTS, d.depot)}</select></label><label class="field">Précision sur le dépôt<input type="text" name="depot_detail" value="${esc(d.depot_detail || "")}" placeholder="Ex. : un seul dépôt par binôme"></label></div>
+      <div class="field">Barème <span class="hint">(au moins deux critères)</span>${rowsEditor("criteres", [{ k: "critere", label: "Critère évalué" }, { k: "points", label: "Points", type: "number", w: "90px" }], d.criteres || [])}</div>
+      <div class="field">Documents utiles${rowsEditor("docs", DOC_FIELDS, d.documents || [])}<label class="check small"><input type="checkbox" name="sans_document"${d.sans_document ? " checked" : ""}><span>Ce devoir ne nécessite aucun document</span></label></div>
+      <label class="field">Précisions <span class="hint">(outils autorisés, pénalités de retard…)</span><textarea name="complements" rows="2">${esc(d.complements || "")}</textarea></label>
+      <div class="row"><button class="btn" data-statut="publie">Publier</button><button class="btn ghost" data-statut="brouillon">Enregistrer en brouillon</button></div></form>
+      <aside class="sheet" style="align-self:start;position:sticky;top:80px"><div class="spread"><h2>Clarté</h2><span class="chip" id="cs"></span></div><ul class="clar" id="cl"></ul><p class="small muted">Une fiche complète, c'est moins de questions par message privé et moins de rendus hors sujet.</p></aside></div>`;
+  const f = $("#dfm");
+  const read = () => { const x = formData(f); return { ...x, criteres: readRows(f, "criteres").filter(k => k.critere), documents: readRows(f, "docs").filter(k => k.nom) }; };
+  const upd = () => { const c = clarity(read()); $("#cs").textContent = `${c.ok}/${c.n}`; $("#cs").className = `chip ${c.ok === c.n ? "ok" : "warn"}`; $("#cl").innerHTML = c.items.map(([k, v]) => `<li class="${v ? "on" : "off"}">${k}</li>`).join(""); };
+  f.addEventListener("input", upd); f.addEventListener("change", upd); upd();
+  let statut = "publie"; $$("[data-statut]", f).forEach(b => b.addEventListener("click", () => statut = b.dataset.statut));
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault(); const x = read(), c = clarity(x);
+    if (statut === "publie" && c.ok < c.n && !confirm(`La fiche n'est complète qu'à ${c.ok}/${c.n} (manque : ${c.items.filter(i => !i[1]).map(i => i[0].toLowerCase()).join(", ")}). Publier quand même ?`)) return;
+    const rec = { ...x, statut, annee: d.annee || await activeYear(), questions: d.questions || [] };
+    const saved = id ? await Store.update("devoirs", id, rec) : await Store.add("devoirs", rec);
+    toast(statut === "publie" ? "Devoir publié" : "Brouillon enregistré"); navigate(`#/devoirs/${saved.id}`);
+  });
+}
+tool({ id: "devoirs", title: "Devoirs", group: "Ma formation", icon: "assign", short: "", page: devoirsPage,
+  badge: async () => { if (!PROFILE) return 0; if (PROFILE.role === "etudiant") { const r = await getRendus(); return (await visibleDevoirs()).filter(d => d.statut === "publie" && d.date_rendu && daysUntil(d.date_rendu) >= 0 && daysUntil(d.date_rendu) <= 7 && !r.has(d.id)).length; } return (await visibleDevoirs()).flatMap(d => (d.questions || []).filter(q => !q.reponse)).length; },
+  badgeTitle: "Devoirs à rendre dans les 7 jours, ou questions en attente" });
+
+/* ---------------- Projets encadrés ---------------- */
+async function projetsPage(page, id) {
+  const Y = await activeYear();
+  if (!id) {
+    const list = (await Store.list("projets")).filter(p => p.annee === Y && (PROFILE.role !== "etudiant" || p.niveau === PROFILE.niveau));
+    page.innerHTML = `<header class="page-head"><h1>Projets</h1><p>Les projets encadrés de la formation : groupes, jalons et livrables attendus à chaque étape.</p></header>
+      <div class="grid g-side"><div class="stack">${list.length ? list.map(p => { const next = (p.jalons || []).filter(j => !j.fait).sort((a, b) => a.date.localeCompare(b.date))[0], done = (p.jalons || []).filter(j => j.fait).length;
+        return `<a class="sheet proj-card" href="#/projets/${p.id}"><div class="spread"><h2 style="margin:0">${esc(p.titre)}</h2><span class="chip lvl">${esc(p.niveau)}</span></div><p class="small" style="margin:6px 0">${esc(p.description || "")}</p><div class="bar"><i style="width:${(p.jalons || []).length ? done / p.jalons.length * 100 : 0}%"></i></div><div class="meta" style="margin-top:6px"><span>Encadré par ${esc(p.encadrant)}</span><span>${(p.groupes || []).length} groupe${(p.groupes || []).length > 1 ? "s" : ""}</span>${next ? `<span>Prochain jalon : ${esc(next.titre)}, ${fmtShort(next.date)}</span>` : ""}</div></a>`; }).join("") : `<div class="sheet">${emptyState("Aucun projet encadré", "Les projets créés par les professeurs apparaîtront ici.")}</div>`}</div>
+      ${isStaff() ? `<form class="sheet stack" id="pf2" style="align-self:start"><h2>Nouveau projet</h2><label class="field">Titre<input type="text" name="titre" required></label><label class="field">Promo<select name="niveau">${opts(PROMOS, "B2")}</select></label><label class="field">Encadrant<input type="text" name="encadrant" value="${esc(PROFILE.role === "prof" ? PROFILE.nom : "")}" required></label><label class="field">Description<textarea name="description" rows="3"></textarea></label><button class="btn">Créer le projet</button></form>` : ""}</div>`;
+    $("#pf2")?.addEventListener("submit", async (e) => { e.preventDefault(); const p = await Store.add("projets", { ...formData(e.target), annee: Y, groupes: [], jalons: [] }); toast("Projet créé"); navigate(`#/projets/${p.id}`); });
+    return;
+  }
+  const draw = async () => {
+    const p = await Store.get("projets", id); if (!p) { page.innerHTML = `<div class="sheet">${emptyState("Projet introuvable", "", `<a class="btn" href="#/projets">Tous les projets</a>`)}</div>`; return; }
+    const edit = isAdmin() || (PROFILE.role === "prof" && p.encadrant === PROFILE.nom);
+    const jal = [...(p.jalons || [])].map((j, i) => ({ ...j, i })).sort((a, b) => a.date.localeCompare(b.date));
+    page.innerHTML = `<p class="crumbs"><a href="#/projets">Projets</a> › ${esc(p.niveau)}</p><header class="page-head"><h1>${esc(p.titre)}</h1><p>Encadré par ${esc(p.encadrant)}${p.description ? " · " + esc(p.description) : ""}</p></header>
+      <div class="grid g-side"><section class="sheet"><h2>Jalons</h2>${jal.length ? `<ol class="timeline">${jal.map(j => `<li class="${j.fait ? "past" : j.date < today() ? "late" : ""}" data-j="${j.i}"><div class="tl-date"><b>${fmtShort(j.date)}</b><span>${j.fait ? "Terminé" : j.date < today() ? "En retard" : countdown(j.date)}</span></div><div class="tl-body"><b>${esc(j.titre)}</b>${j.livrable ? `<p class="small" style="margin:4px 0 0">Livrable : ${esc(j.livrable)}</p>` : ""}${edit ? `<div class="row" style="margin-top:6px"><label class="check small"><input type="checkbox" data-done${j.fait ? " checked" : ""}><span>Jalon terminé</span></label><button class="link-btn small" data-rmj>Retirer</button></div>` : ""}</div></li>`).join("")}</ol>` : `<p class="muted">Aucun jalon défini.</p>`}
+        ${edit ? `<form class="row" id="jf" style="margin-top:14px;align-items:flex-end"><label class="field" style="flex:2 1 180px">Jalon<input type="text" name="titre" required></label><label class="field" style="flex:1 1 140px">Date<input type="date" name="date" required></label><label class="field" style="flex:3 1 220px">Livrable attendu<input type="text" name="livrable"></label><button class="btn sm">Ajouter</button></form>` : ""}</section>
+      <section class="sheet"><h2>Groupes</h2>${(p.groupes || []).length ? `<ul class="list">${p.groupes.map((g, i) => `<li data-g="${i}"><b>${esc(g.nom)}</b><p class="small" style="margin:2px 0 0">${esc(g.membres)}</p>${edit ? `<button class="link-btn small" data-rmg>Retirer</button>` : ""}</li>`).join("")}</ul>` : `<p class="muted">Aucun groupe.</p>`}
+        ${edit ? `<form class="stack" id="gf" style="margin-top:14px"><label class="field">Nom du groupe ou sujet<input type="text" name="nom" required></label><label class="field">Membres<input type="text" name="membres" placeholder="Prénom Nom, Prénom Nom…"></label><button class="btn sm" style="align-self:flex-start">Ajouter le groupe</button></form>` : ""}</section></div>`;
+    $("#jf")?.addEventListener("submit", async (e) => { e.preventDefault(); await Store.update("projets", id, { jalons: [...(p.jalons || []), { ...formData(e.target), fait: false }] }); toast("Jalon ajouté"); draw(); });
+    $("#gf")?.addEventListener("submit", async (e) => { e.preventDefault(); await Store.update("projets", id, { groupes: [...(p.groupes || []), formData(e.target)] }); toast("Groupe ajouté"); draw(); });
+    page.onchange = async (e) => { if (!e.target.matches("[data-done]")) return; const js = [...p.jalons]; js[+e.target.closest("[data-j]").dataset.j].fait = e.target.checked; await Store.update("projets", id, { jalons: js }); draw(); };
+    page.onclick = async (e) => {
+      if (e.target.closest("[data-rmj]")) { const js = [...p.jalons]; js.splice(+e.target.closest("[data-j]").dataset.j, 1); await Store.update("projets", id, { jalons: js }); draw(); }
+      if (e.target.closest("[data-rmg]")) { const gs = [...p.groupes]; gs.splice(+e.target.closest("[data-g]").dataset.g, 1); await Store.update("projets", id, { groupes: gs }); draw(); }
+    };
+  };
+  draw();
+}
+tool({ id: "projets", title: "Projets encadrés", group: "Ma formation", icon: "projects", short: "", page: projetsPage });
+
+/* ---------------- Administration ---------------- */
+async function workloadAlerts(Y) {
+  const M = await matieresMap(), byKey = {};
+  (await Store.list("devoirs")).filter(d => d.annee === Y && d.statut === "publie" && d.date_rendu && d.date_rendu >= today()).forEach(d => { const n = M[d.matiere_id]?.niveau; if (!n) return; (byKey[n + "|" + d.date_rendu] ||= []).push(d); });
+  return Object.entries(byKey).filter(([, v]) => v.length >= 2).map(([k, items]) => ({ niveau: k.split("|")[0], date: k.split("|")[1], items })).sort((a, b) => a.date.localeCompare(b.date));
+}
+async function adminYears(panel) {
+  const draw = async () => {
+    const Y = await activeYear(), seances = await Store.list("seances"), devs = await Store.list("devoirs"), mats = await Store.list("matieres");
+    const years = [...new Set([...seances, ...devs].map(x => x.annee).concat(Y))].sort();
+    const [a, b] = Y.split("-").map(Number), next = `${a + 1}-${b + 1}`;
+    panel.innerHTML = `<div class="grid g2"><section class="sheet"><h2>Année active</h2><p class="small muted">Tout le monde voit les séances, devoirs et dates de l'année active.</p><label class="field">Année<select id="ya">${opts(years, Y)}</select></label>
+      <table class="data" style="margin-top:14px"><thead><tr><th>Année</th><th>Séances</th><th>Devoirs</th></tr></thead><tbody>${years.map(y => `<tr><td>${y}${y === Y ? " (active)" : ""}</td><td class="num">${seances.filter(s => s.annee === y).length}</td><td class="num">${devs.filter(d => d.annee === y).length}</td></tr>`).join("")}</tbody></table></section>
+      <section class="sheet"><h2>Préparer l'année ${next}</h2><p>Au lieu de recréer équipes et canaux, on repart de la structure de ${Y} :</p><ul class="plain small"><li>les ${mats.length} matières restent les mêmes (professeurs modifiables) ;</li><li>les séances et leurs documents sont recopiés, décalés d'un an jour pour jour ;</li><li>les devoirs sont recopiés <b>en brouillon</b>, sans les questions, pour que chaque professeur les relise avant publication.</li></ul>
+      ${years.includes(next) ? `<div class="note" style="margin-top:10px"><p>L'année ${next} existe déjà.</p></div>` : `<button class="btn" id="dup" style="margin-top:10px">Préparer ${next} à partir de ${Y}</button>`}</section></div>`;
+    $("#ya").addEventListener("change", async (e) => { await Store.setDoc("annee_active", e.target.value); toast(`Année active : ${e.target.value}`); route(); });
+    $("#dup")?.addEventListener("click", async () => {
+      if (!confirm(`Créer l'année ${next} en recopiant la structure de ${Y} ?`)) return;
+      const shift = (d) => d ? addDays(d, 364) : d;
+      for (const s of seances.filter(s => s.annee === Y)) { const { id, created_at, updated_at, ...rest } = s; await Store.add("seances", { ...rest, annee: next, date: shift(s.date) }); }
+      for (const d of devs.filter(d => d.annee === Y)) { const { id, created_at, updated_at, ...rest } = d; await Store.add("devoirs", { ...rest, annee: next, date_rendu: shift(d.date_rendu), statut: "brouillon", questions: [] }); }
+      toast(`Année ${next} préparée`); draw();
+    });
+  };
+  draw();
+}
+async function adminWorkload(panel) {
+  const Y = await activeYear(), M = await matieresMap(), devs = (await Store.list("devoirs")).filter(d => d.annee === Y && d.statut === "publie" && d.date_rendu);
+  const alerts = await workloadAlerts(Y);
+  const monday = (iso) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() - ((d.getDay() + 6) % 7)); return isoLocal(d); };
+  const weeks = Array.from({ length: 10 }, (_, i) => addDays(monday(today()), 7 * i));
+  const count = (n, w) => devs.filter(d => M[d.matiere_id]?.niveau === n && d.date_rendu >= w && d.date_rendu < addDays(w, 7));
+  panel.innerHTML = `<section class="sheet"><h2>Rendus par semaine</h2><p class="small muted">Nombre de devoirs publiés à rendre chaque semaine, par promo. Au-delà de 3, la semaine est signalée.</p>
+    <div class="table-wrap" style="max-height:none"><table class="data heat"><thead><tr><th>Promo</th>${weeks.map(w => `<th>${fmtShort(w).replace(/^\S+ /, "")}</th>`).join("")}</tr></thead><tbody>${PROMOS.map(n => `<tr><td><b>${n}</b></td>${weeks.map(w => { const c = count(n, w); return `<td class="num h${Math.min(c.length, 4)}" title="${c.map(d => esc(d.titre)).join("\n")}">${c.length || ""}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div></section>
+    <section class="sheet"><h2>Rendus le même jour</h2>${alerts.length ? `<ul class="list">${alerts.map(a => `<li><b>${esc(a.niveau)} · ${fmtDay(a.date)}</b><ul class="plain small">${a.items.map(d => `<li><a href="#/devoirs/${d.id}">${esc(d.titre)}</a> · ${esc(M[d.matiere_id].nom)} · ${esc(M[d.matiere_id].prof)}${d.heure_rendu ? ", avant " + d.heure_rendu : ""}</li>`).join("")}</ul></li>`).join("")}</ul><p class="small muted" style="margin-top:10px">Pense à prévenir les professeurs concernés pour décaler l'un des rendus.</p>` : `<p class="muted">Aucun chevauchement.</p>`}</section>`;
+}
+async function adminQuestions(panel) {
+  const M = await matieresMap(), Y = await activeYear();
+  const items = (await Store.list("devoirs")).filter(d => d.annee === Y).flatMap(d => (d.questions || []).filter(q => !q.reponse).map(q => ({ q, d, m: M[d.matiere_id] }))).sort((a, b) => a.q.date.localeCompare(b.q.date));
+  panel.innerHTML = `<section class="sheet"><h2>Questions sans réponse (${items.length})</h2>${items.length ? `<ul class="list">${items.map(({ q, d, m }) => `<li><a class="ev-title" href="#/devoirs/${d.id}">${esc(q.texte)}</a><div class="meta"><span>${esc(q.auteur)}</span><span>${esc(m?.niveau || "")} · ${esc(m?.nom || "")}</span><span>${esc(m?.prof || "")}</span><span>posée ${dateFR(q.date)}</span></div></li>`).join("")}</ul>` : `<p class="muted">Toutes les questions ont reçu une réponse.</p>`}</section>`;
+}
+async function adminMatieres(panel) {
+  const draw = async () => {
+    const all = (await Store.list("matieres")).sort((a, b) => (a.niveau + a.semestre + a.nom).localeCompare(b.niveau + b.semestre + b.nom));
+    panel.innerHTML = `<div class="grid g-side"><section class="sheet"><h2>Catalogue des matières (${all.length})</h2><div class="table-wrap" style="max-height:560px"><table class="data"><thead><tr><th>Promo</th><th>Matière</th><th>Professeur</th><th></th></tr></thead><tbody>${all.map(m => `<tr data-id="${m.id}"><td>${esc(m.niveau)} · ${esc(m.semestre)}</td><td><a href="#/matieres/${m.id}">${esc(m.nom)}</a></td><td><input type="text" value="${esc(m.prof || "")}" data-prof aria-label="Professeur de ${esc(m.nom)}" style="padding:4px 8px;min-width:140px"></td><td><button class="link-btn small" data-rm>Supprimer</button></td></tr>`).join("")}</tbody></table></div><p class="small muted" style="margin-top:8px">Modifie le nom d'un professeur puis quitte le champ pour l'enregistrer.</p></section>
+      <form class="sheet stack" id="mf2" style="align-self:start"><h2>Ajouter une matière</h2><label class="field">Nom<input type="text" name="nom" required></label><div class="row"><label class="field" style="flex:1">Promo<select name="niveau">${opts(PROMOS)}</select></label><label class="field" style="flex:1">Semestre<select name="semestre">${opts(["S1", "S2", "S3", "S4", "S5", "S6"])}</select></label></div><label class="field">Professeur<input type="text" name="prof"></label><label class="field">Lien Teams<input type="url" name="teams"></label><button class="btn">Ajouter</button></form></div>`;
+    $("#mf2").addEventListener("submit", async (e) => { e.preventDefault(); await Store.add("matieres", formData(e.target)); toast("Matière ajoutée"); draw(); });
+  };
+  panel.addEventListener("change", async (e) => { if (!e.target.matches("[data-prof]")) return; await Store.update("matieres", e.target.closest("[data-id]").dataset.id, { prof: e.target.value.trim() }); toast("Professeur mis à jour"); });
+  panel.addEventListener("click", async (e) => { if (!e.target.closest("[data-rm]")) return; const id = e.target.closest("[data-id]").dataset.id; if (!confirm("Supprimer cette matière ? Ses séances et devoirs ne seront plus accessibles.")) return; await Store.remove("matieres", id); toast("Matière supprimée"); draw(); });
+  draw();
+}
+async function adminDemo(panel) {
+  panel.innerHTML = `<section class="sheet"><h2>Données de démonstration</h2><p>La plateforme contient des exemples (matières de B1 à B3, séances, devoirs, annonces, projet tutoré) pour montrer son fonctionnement. Les noms de professeurs et d'étudiants sont fictifs.</p><div class="row"><button class="btn danger" id="cd">Retirer les exemples</button><button class="btn ghost" id="rd">Réinstaller les exemples</button></div></section>`;
+  $("#cd").onclick = async () => { if (!confirm("Retirer toutes les données d'exemple ? Ce que tu as créé toi-même est conservé.")) return; await clearDemo(); toast("Exemples retirés"); route(); };
+  $("#rd").onclick = async () => { await clearDemo(); await Store.setDoc("seeded", false); await seedDemo(); toast("Exemples réinstallés"); route(); };
+}
+tool({ id: "administration", title: "Administration", group: "Administration", icon: "admin", roles: ["admin"], short: "",
+  lede: "Préparer l'année, organiser les matières, surveiller la charge de travail et les questions restées sans réponse.",
+  tabs: [{ id: "annees", label: "Années", render: adminYears }, { id: "charge", label: "Charge de travail", render: adminWorkload }, { id: "questions", label: "Questions en attente", render: adminQuestions }, { id: "matieres", label: "Matières", render: adminMatieres }, { id: "demo", label: "Exemples", render: adminDemo }],
+  badge: async () => (await workloadAlerts(await activeYear())).length, badgeTitle: "Rendus qui se chevauchent" });
+
+ICONS.bell = '<path d="M6 9a6 6 0 0 1 12 0c0 5 2 7 2 7H4s2-2 2-7"/><path d="M10 20a2 2 0 0 0 4 0"/>';
+ICONS.calendar = '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>';
+ICONS.assign = '<path d="M9 4h6v3H9z"/><path d="M7 5H5v16h14V5h-2"/><path d="M9 13l2 2 4-4"/>';
+ICONS.admin = '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>';
 
 /* =====================================================================
    APPRENDRE : Statistiques, Code, Cas business, Cours des profs
@@ -2011,7 +2660,7 @@ const FORMULAS = [
 function statsFormulas(panel) {
   panel.innerHTML = `<div class="grid g2">${FORMULAS.map(([t, list]) => `<div class="sheet"><h3>${t}</h3>${list.map(([n, f]) => `<div class="formula"><h4>${n}</h4>${tex(f)}</div>`).join("")}</div>`).join("")}</div>`;
 }
-tool({ id: "stats", title: "Statistiques & probabilités", group: "Apprendre", icon: "stats", short: "Lois, tests, intervalles de confiance, exercices corrigés",
+tool({ id: "stats", title: "Statistiques & probabilités", group: "Boîte à outils", icon: "stats", short: "Lois, tests, intervalles de confiance, exercices corrigés",
   lede: "Manipule les lois de probabilité, fais tes tests d'hypothèses pas à pas et entraîne-toi sur des exercices corrigés.",
   tabs: [{ id: "distributions", label: "Distributions", render: statsDistributions }, { id: "calculateurs", label: "Calculateurs de tests", render: statsCalculators }, { id: "exercices", label: "Exercices", render: statsExercises }, { id: "formulaire", label: "Formulaire", render: statsFormulas }] });
 
@@ -2056,7 +2705,7 @@ function codeQuiz(panel) {
 function codePractices(panel) {
   panel.innerHTML = CONTENT.code_assistant.practices.map(p => `<div class="sheet"><h3>${esc(stripEmoji(p.titre))}</h3>${codeBlock(p.code, p.lang)}</div>`).join("");
 }
-tool({ id: "code", title: "Assistant code", group: "Apprendre", icon: "code", short: "Comprendre une erreur Python, snippets Pandas, SQL, scikit-learn",
+tool({ id: "code", title: "Assistant code", group: "Boîte à outils", icon: "code", short: "Comprendre une erreur Python, snippets Pandas, SQL, scikit-learn",
   lede: "Comprends tes erreurs Python, retrouve les bouts de code utiles et teste tes bases.",
   tabs: [{ id: "erreurs", label: "Expliquer une erreur", render: codeErrors }, { id: "snippets", label: "Snippets", render: codeSnippets }, { id: "quiz", label: "Quiz Python", render: codeQuiz }, { id: "pratiques", label: "Bonnes pratiques", render: codePractices }] });
 
@@ -2115,25 +2764,10 @@ async function caseSubmit(panel) {
   };
   draw();
 }
-tool({ id: "cas", title: "Cas business", group: "Apprendre", icon: "cases", short: "Projets réalistes guidés, avec leurs données",
+tool({ id: "cas", title: "Cas business", group: "Boîte à outils", icon: "cases", short: "Projets réalistes guidés, avec leurs données",
   lede: "Des cas inspirés d'entreprises réelles : choisis-en un, génère ses données, avance objectif par objectif.",
   tabs: [{ id: "catalogue", label: "Catalogue", render: casesList }, { id: "projet", label: "Mon cas en cours", render: caseProject }, { id: "soumettre", label: "Soumettre", render: caseSubmit }] });
 
-/* ---------------- Cours des professeurs (côté étudiant) ---------------- */
-async function studentCourses(panel) {
-  const courses = (await Store.list("courses")).filter(c => c.visible !== false), exos = await Store.list("exercises");
-  if (!courses.length) { panel.innerHTML = `<div class="sheet">${emptyState("Pas encore de cours publiés", "Les cours et exercices déposés par tes professeurs apparaîtront ici.")}</div>`; return; }
-  const mats = [...new Set(courses.map(c => c.matiere))];
-  panel.innerHTML = `<div class="row" style="margin-bottom:14px"><label class="field">Matière<select id="m"><option>Toutes</option>${opts(mats)}</select></label></div><div id="cl" class="stack"></div>`;
-  const show = () => {
-    const m = $("#m").value, list = courses.filter(c => m === "Toutes" || c.matiere === m);
-    $("#cl").innerHTML = list.map(c => { const ex = exos.filter(e => e.course_id === c.id); return `<details class="fold"><summary>${esc(c.chapitre)} <span class="chip lvl">${esc(c.matiere)}</span></summary><div class="fold-body"><div class="meta" style="margin-bottom:8px"><span>${esc(c.prof_name)}</span><span>${esc(c.niveau)}</span><span>${dateFR(c.created_at)}</span></div><div style="white-space:pre-wrap;max-height:320px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:12px">${esc(c.contenu)}</div>${ex.length ? `<h3 style="margin-top:16px">Exercices</h3><div class="stack qzc" data-c="${c.id}">${quiz(ex.map(e => ({ ...e, _k: c.id })))}</div>` : ""}</div></details>`; }).join("");
-    $$(".qzc").forEach(box => bindQuiz(box, exos.filter(e => e.course_id === box.dataset.c)));
-  };
-  $("#m").addEventListener("change", show); show();
-}
-tool({ id: "cours", title: "Cours des profs", group: "Apprendre", icon: "courses", short: "Les cours et exercices publiés par tes professeurs",
-  lede: "Retrouve les chapitres déposés par tes professeurs, et entraîne-toi sur leurs exercices.", render: studentCourses });
 
 /* =====================================================================
    APPRENDRE (ressources) + S'ORGANISER : Projets, Révisions, Datasets
@@ -2157,7 +2791,7 @@ function resDocs(panel) {
 function resVideos(panel) {
   panel.innerHTML = `<div class="sheet"><ul class="list">${CONTENT.resources_library.channels.map(c => `<li><a href="${esc(c.url)}" target="_blank" rel="noopener"><b>${esc(c.nom)}</b></a><p style="margin:2px 0" class="small">${esc(c.description)}</p><div class="meta"><span>${esc(c.focus)}</span></div></li>`).join("")}</ul></div>`;
 }
-tool({ id: "ressources", title: "Ressources", group: "Apprendre", icon: "links", short: "Tutoriels, datasets publics, documentations, chaînes YouTube",
+tool({ id: "ressources", title: "Ressources", group: "Boîte à outils", icon: "links", short: "Tutoriels, datasets publics, documentations, chaînes YouTube",
   lede: "Une sélection de ressources fiables pour aller plus loin que le cours.",
   tabs: [{ id: "tutoriels", label: "Tutoriels", render: resTutorials }, { id: "datasets", label: "Datasets publics", render: resDatasets }, { id: "docs", label: "Documentation", render: resDocs }, { id: "videos", label: "Vidéos", render: resVideos }] });
 
@@ -2169,8 +2803,8 @@ async function projectsList(panel) {
   let filter = "Tous";
   const draw = async () => {
     const all = (await Store.list("projects")).reverse(), list = all.filter(p => filter === "Tous" || p.statut === filter);
-    if (!all.length) { panel.innerHTML = `<div class="sheet">${emptyState("Aucun projet pour l'instant", "Crée ton premier projet ou pars d'un modèle tout prêt.", `<div class="row" style="justify-content:center"><a class="btn" href="#/projets/nouveau">Nouveau projet</a><a class="btn ghost" href="#/projets/templates">Voir les modèles</a></div>`)}</div>`; return; }
-    panel.innerHTML = `<div class="row" style="margin-bottom:14px"><div class="seg" id="sf">${["Tous", ...STATUSES].map(s => `<button aria-pressed="${s === filter}">${s}</button>`).join("")}</div><a class="btn sm" href="#/projets/nouveau" style="margin-left:auto">Nouveau projet</a></div>
+    if (!all.length) { panel.innerHTML = `<div class="sheet">${emptyState("Aucun projet pour l'instant", "Crée ton premier projet ou pars d'un modèle tout prêt.", `<div class="row" style="justify-content:center"><a class="btn" href="#/projets-perso/nouveau">Nouveau projet</a><a class="btn ghost" href="#/projets-perso/templates">Voir les modèles</a></div>`)}</div>`; return; }
+    panel.innerHTML = `<div class="row" style="margin-bottom:14px"><div class="seg" id="sf">${["Tous", ...STATUSES].map(s => `<button aria-pressed="${s === filter}">${s}</button>`).join("")}</div><a class="btn sm" href="#/projets-perso/nouveau" style="margin-left:auto">Nouveau projet</a></div>
       <div class="stack">${list.map(p => { const t = p.taches || [], d = t.filter(x => x.done).length; return `<details class="fold" data-id="${p.id}"><summary><span style="flex:1">${esc(p.nom)}</span><span class="chip${p.statut === "Terminé" ? " ok" : ""}">${esc(p.statut)}</span></summary><div class="fold-body">
         <div class="meta" style="margin-bottom:8px"><span>${esc(p.type)}</span>${p.date_debut ? `<span>Début : ${dateFR(p.date_debut)}</span>` : ""}</div>${p.description ? `<p>${nl2br(p.description)}</p>` : ""}${chipList(p.technologies)}
         <h3 style="margin-top:16px">Tâches <span class="muted small">${d} / ${t.length}</span></h3>${t.length ? `<div class="bar" style="margin-bottom:6px"><i style="width:${d / t.length * 100}%"></i></div>` : ""}
@@ -2214,7 +2848,7 @@ function bindProjectForm(panel) {
     d.taches = d.taches.split("\n").map(s => s.trim()).filter(Boolean).map(titre => ({ titre, done: false }));
     await Store.add("projects", d);
     if (d.echeance) await Store.add("deadlines", { titre: d.nom, type: "Projet", date: d.echeance, description: d.type });
-    toast("Projet créé"); navigate("#/projets/mes-projets");
+    toast("Projet créé"); navigate("#/projets-perso/mes-projets");
   });
 }
 function projectNew(panel) {
@@ -2226,9 +2860,9 @@ function projectNew(panel) {
 }
 function projectTemplates(panel) {
   panel.innerHTML = `<div class="grid g2">${CONTENT.project_manager.templates.map(t => `<div class="sheet"><h3>${esc(t.nom)}</h3><p class="small">${esc(t.description)}</p>${chipList(t.technologies)}<ul class="plain" style="margin:12px 0">${t.taches.map(x => `<li>${esc(x)}</li>`).join("")}</ul><button class="btn sm" data-tpl="${esc(t.nom)}">Utiliser ce modèle</button></div>`).join("")}</div>`;
-  panel.addEventListener("click", (e) => { const b = e.target.closest("[data-tpl]"); if (!b) return; SS.setItem("udsh:tpl", b.dataset.tpl); navigate("#/projets/nouveau"); });
+  panel.addEventListener("click", (e) => { const b = e.target.closest("[data-tpl]"); if (!b) return; SS.setItem("udsh:tpl", b.dataset.tpl); navigate("#/projets-perso/nouveau"); });
 }
-tool({ id: "projets", title: "Mes projets", group: "S'organiser", icon: "projects", short: "Suivi de tes projets data, tâches et échéances",
+tool({ id: "projets-perso", title: "Projets perso", group: "Boîte à outils", icon: "projects", short: "Tes projets personnels, tâches et technologies",
   lede: "Organise tes projets de cours et personnels : tâches, technologies, avancement.",
   tabs: [{ id: "mes-projets", label: "Mes projets", render: projectsList }, { id: "nouveau", label: "Nouveau projet", render: projectNew }, { id: "templates", label: "Modèles", render: projectTemplates }] });
 
@@ -2311,7 +2945,7 @@ async function revLibrary(panel) {
   });
   draw();
 }
-tool({ id: "revisions", title: "Révisions", group: "S'organiser", icon: "cards", short: "Flashcards avec répétition espacée",
+tool({ id: "revisions", title: "Révisions", group: "Boîte à outils", icon: "cards", badge: async () => (await Store.list("flashcards")).filter(isDue).length, badgeTitle: "Cartes à réviser", short: "Flashcards avec répétition espacée",
   lede: "Des flashcards qui reviennent au bon moment : les cartes difficiles demain, les faciles dans une semaine.",
   tabs: [{ id: "reviser", label: "Réviser", render: revSession }, { id: "creer", label: "Créer une carte", render: revCreate }, { id: "progression", label: "Progression", render: revProgress }, { id: "bibliotheque", label: "Bibliothèque", render: revLibrary }] });
 
@@ -2431,7 +3065,7 @@ async function dsMine(panel) {
   });
   draw();
 }
-tool({ id: "datasets", title: "Générateur de datasets", group: "S'organiser", icon: "data", short: "Données synthétiques en CSV pour t'entraîner",
+tool({ id: "datasets", title: "Générateur de datasets", group: "Boîte à outils", icon: "data", short: "Données synthétiques en CSV pour t'entraîner",
   lede: "Des jeux de données réalistes, prêts à charger dans Pandas : ventes, CRM, RH, finance, santé…",
   tabs: [{ id: "predefinis", label: "Datasets prêts à l'emploi", render: dsPredefined }, { id: "perso", label: "Sur mesure", render: dsCustom }, { id: "mes-datasets", label: "Mes datasets", render: dsMine }] });
 
@@ -2479,7 +3113,7 @@ async function itvTips(panel) {
   const count = () => { $("#cc").textContent = `${checked.filter(Boolean).length} / ${S.checklist.length}`; }; count();
   panel.addEventListener("change", async (e) => { const i = e.target.dataset.c; if (i === undefined) return; checked[i] = e.target.checked; e.target.closest(".check").classList.toggle("done", e.target.checked); await Store.setDoc("itv_checklist", checked); count(); });
 }
-tool({ id: "entretiens", title: "Entretiens", group: "Carrière", icon: "mic", short: "Questions techniques, études de cas, checklist",
+tool({ id: "entretiens", title: "Entretiens", group: "Boîte à outils", icon: "mic", short: "Questions techniques, études de cas, checklist",
   lede: "Entraîne-toi aux questions de stage et d'alternance en data : technique, études de cas, savoir-être.",
   tabs: [{ id: "questions", label: "Questions", render: itvQuestions }, { id: "cas", label: "Études de cas", render: itvCases }, { id: "conseils", label: "Conseils", render: itvTips }] });
 
@@ -2558,7 +3192,7 @@ async function folioPreview(panel) {
   $("iframe", panel).srcdoc = html;
   $("#exp").addEventListener("click", () => download(`portfolio_${slug(f.full_name || "etudiant")}.html`, html, "text/html"));
 }
-tool({ id: "portfolio", title: "Portfolio", group: "Carrière", icon: "folio", short: "Ta page pro à envoyer aux recruteurs",
+tool({ id: "portfolio", title: "Portfolio", group: "Boîte à outils", icon: "folio", short: "Ta page pro à envoyer aux recruteurs",
   lede: "Construis une page de présentation claire de tes projets et compétences, puis exporte-la en un fichier.",
   tabs: [{ id: "infos", label: "Informations", render: folioInfo }, { id: "projets", label: "Projets", render: folioProjects }, { id: "competences", label: "Compétences", render: folioSkills }, { id: "apercu", label: "Aperçu et export", render: folioPreview }] });
 
@@ -2625,85 +3259,9 @@ async function forumDeadlines(panel) {
   panel.addEventListener("click", async (e) => { if (!e.target.closest("[data-rm]")) return; await Store.remove("deadlines", e.target.closest("[data-id]").dataset.id); draw(); });
   draw();
 }
-tool({ id: "forum", title: "Entraide", group: "Communauté", icon: "forum", short: "Questions-réponses, binômes, échéances",
+tool({ id: "forum", title: "Entraide", group: "Boîte à outils", icon: "forum", short: "Questions-réponses, binômes, échéances",
   lede: "Pose tes questions, aide les autres, trouve un binôme et garde un œil sur les échéances.",
   tabs: [{ id: "questions", label: "Questions", render: forumQuestions }, { id: "poser", label: "Poser une question", render: forumAsk }, { id: "binomes", label: "Binômes et groupes", render: forumPartners }, { id: "deadlines", label: "Échéances", render: forumDeadlines }] });
-
-/* ---------------- Espace professeur ---------------- */
-const NIVEAUX = ["Débutant", "Intermédiaire", "Avancé"];
-function keywords(text) {
-  const words = CONTENT.teacher_space.patterns.flatMap(p => (p.match(/\((.*)\)/)?.[1] || "").split("|")).filter(Boolean);
-  const low = text.toLowerCase();
-  return words.filter(w => new RegExp(`(^|[^\\p{L}])${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^\\p{L}]|$)`, "u").test(low)).slice(0, 12);
-}
-async function profUpload(panel) {
-  panel.innerHTML = `<div class="grid g-side"><form class="sheet form-grid" id="cf">
-    <label class="field">Nom du professeur<input type="text" name="prof_name" required placeholder="Ex. : Dr Martin"></label>
-    <label class="field">Matière<select name="matiere">${opts(MATIERES)}</select></label>
-    <label class="field">Titre du chapitre<input type="text" name="chapitre" required placeholder="Introduction aux probabilités"></label>
-    <label class="field">Niveau<select name="niveau">${opts(NIVEAUX)}</select></label>
-    <label class="field full">Contenu du cours <span class="hint">(texte, ou importe un fichier .txt / .md)</span><textarea name="contenu" rows="10" required id="ct"></textarea></label>
-    <label class="field full">Importer un fichier<input type="file" id="file" accept=".txt,.md,text/plain,text/markdown"></label>
-    <label class="check full"><input type="checkbox" name="visible" checked><span>Visible par les étudiants dans « Cours des profs »</span></label>
-    <div class="full"><button class="btn">Publier le cours</button></div></form>
-    <div class="stack"><div class="sheet"><h3>Notions repérées</h3><div id="kw"><p class="small muted">Elles apparaîtront ici pendant que tu saisis le cours.</p></div></div>
-    <div class="sheet"><h3>Génération d'exercices par IA</h3><p class="small">La génération automatique avec Gemini sera branchée à l'étape suivante, via un service qui garde la clé API secrète.</p><p class="small muted">En attendant, tu peux créer tes exercices à la main dans l'onglet « Exercices ».</p></div></div></div>`;
-  const kw = () => { const k = keywords($("#ct").value); $("#kw").innerHTML = k.length ? chipList(k, "lvl") : `<p class="small muted">Aucune notion reconnue pour l'instant.</p>`; };
-  $("#ct").addEventListener("input", kw);
-  $("#file").addEventListener("change", async (e) => { const f = e.target.files[0]; if (!f) return; if (f.size > 2e6) return toast("Fichier trop lourd (2 Mo maximum)."); $("#ct").value = await f.text(); if (!$("#cf").chapitre.value) $("#cf").chapitre.value = f.name.replace(/\.\w+$/, ""); kw(); });
-  $("#cf").addEventListener("submit", async (e) => { e.preventDefault(); const d = formData(e.target); d.notions = keywords(d.contenu); await Store.add("courses", d); toast("Cours publié"); navigate("#/espace-prof/cours"); });
-}
-async function profCourses(panel) {
-  const draw = async () => {
-    const list = (await Store.list("courses")).reverse(), exos = await Store.list("exercises");
-    panel.innerHTML = list.length ? `<div class="stack">${list.map(c => `<details class="fold" data-id="${c.id}"><summary><span style="flex:1">${esc(c.chapitre)}</span><span class="chip lvl">${esc(c.matiere)}</span>${c.visible === false ? `<span class="chip">Masqué</span>` : ""}</summary><div class="fold-body">
-      <div class="meta" style="margin-bottom:8px"><span>${esc(c.prof_name)}</span><span>${esc(c.niveau)}</span><span>${dateFR(c.created_at)}</span><span>${exos.filter(e => e.course_id === c.id).length} exercice(s)</span></div>${c.notions?.length ? chipList(c.notions, "lvl") : ""}
-      <div style="white-space:pre-wrap;max-height:260px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:12px;margin-top:10px">${esc(c.contenu)}</div>
-      <div class="row" style="margin-top:12px"><button class="btn sm ghost" data-vis>${c.visible === false ? "Rendre visible" : "Masquer aux étudiants"}</button><button class="btn sm danger" data-rm>Supprimer</button></div></div></details>`).join("")}</div>`
-      : `<div class="sheet">${emptyState("Aucun cours publié", "Publie ton premier chapitre pour le rendre disponible aux étudiants.", `<a class="btn" href="#/espace-prof/publier">Publier un cours</a>`)}</div>`;
-  };
-  panel.addEventListener("click", async (e) => {
-    const id = e.target.closest("[data-id]")?.dataset.id; if (!id) return;
-    if (e.target.closest("[data-vis]")) { const c = await Store.get("courses", id); await Store.update("courses", id, { visible: c.visible === false }); toast(c.visible === false ? "Cours visible" : "Cours masqué"); draw(); }
-    if (e.target.closest("[data-rm]") && confirm("Supprimer ce cours et ses exercices ?")) { await Store.remove("courses", id); for (const x of (await Store.list("exercises")).filter(x => x.course_id === id)) await Store.remove("exercises", x.id); toast("Cours supprimé"); draw(); }
-  });
-  draw();
-}
-async function profExercises(panel) {
-  const courses = await Store.list("courses");
-  if (!courses.length) { panel.innerHTML = `<div class="sheet">${emptyState("Publie d'abord un cours", "Les exercices sont rattachés à un chapitre.", `<a class="btn" href="#/espace-prof/publier">Publier un cours</a>`)}</div>`; return; }
-  const draw = async () => {
-    const exos = (await Store.list("exercises")).reverse();
-    panel.innerHTML = `<div class="grid g-side"><div class="sheet"><h3>Exercices (${exos.length})</h3>${exos.length ? `<ul class="list">${exos.map(x => `<li data-id="${x.id}"><b>${esc(x.question)}</b><div class="meta"><span>${esc(courses.find(c => c.id === x.course_id)?.chapitre || "Cours supprimé")}</span><span>Bonne réponse : ${esc(x.options[x.correct])}</span></div><button class="link-btn small" data-rm>Supprimer</button></li>`).join("")}</ul>` : `<p class="muted">Aucun exercice pour l'instant.</p>`}</div>
-      <form class="sheet stack" id="ef"><h3>Nouvel exercice (QCM)</h3><label class="field">Cours<select name="course_id">${courses.map(c => `<option value="${c.id}">${esc(c.chapitre)}</option>`).join("")}</select></label>
-      <label class="field">Question<textarea name="question" rows="2" required></textarea></label>
-      ${[0, 1, 2, 3].map(i => `<div class="row" style="gap:8px"><input type="radio" name="correct" value="${i}" ${i ? "" : "checked"} aria-label="Réponse ${i + 1} correcte"><input type="text" name="o${i}" placeholder="Réponse ${i + 1}${i < 2 ? "" : " (optionnel)"}" ${i < 2 ? "required" : ""} style="flex:1"></div>`).join("")}
-      <p class="small muted" style="margin:0">Coche le bouton devant la bonne réponse.</p>
-      <label class="field">Explication<textarea name="explication" rows="2"></textarea></label>
-      <label class="field">Niveau<select name="niveau">${opts(["B1", "B2", "B3"])}</select></label><button class="btn">Ajouter l'exercice</button></form></div>`;
-    $("#ef").addEventListener("submit", async (e) => {
-      e.preventDefault(); const d = formData(e.target), raw = [d.o0, d.o1, d.o2, d.o3], correctText = raw[+d.correct];
-      if (!correctText) return toast("La réponse cochée comme correcte est vide.");
-      const options = raw.filter(Boolean);
-      await Store.add("exercises", { course_id: d.course_id, question: d.question, options, correct: options.indexOf(correctText), explication: d.explication, niveau: d.niveau });
-      toast("Exercice ajouté"); draw();
-    });
-  };
-  panel.addEventListener("click", async (e) => { if (!e.target.closest("[data-rm]")) return; await Store.remove("exercises", e.target.closest("[data-id]").dataset.id); draw(); });
-  draw();
-}
-async function profStats(panel) {
-  const [courses, exos, posts] = await Promise.all([Store.list("courses"), Store.list("exercises"), Store.list("forum_posts")]);
-  const byMat = {}; MATIERES.forEach(m => byMat[m] = { c: 0, e: 0 }); courses.forEach(c => { (byMat[c.matiere] ||= { c: 0, e: 0 }).c++; byMat[c.matiere].e += exos.filter(e => e.course_id === c.id).length; });
-  const open = posts.filter(p => !p.resolu);
-  panel.innerHTML = `<div class="metrics" style="margin-bottom:16px"><div class="metric"><b>${courses.length}</b><span>Cours publiés</span></div><div class="metric"><b>${exos.length}</b><span>Exercices</span></div><div class="metric"><b>${open.length}</b><span>Questions non résolues au forum</span></div></div>
-    <div class="grid g2"><div class="sheet"><h3>Par matière</h3><div class="table-wrap" style="max-height:none"><table class="data"><thead><tr><th>Matière</th><th>Cours</th><th>Exercices</th></tr></thead><tbody>${Object.entries(byMat).map(([m, v]) => `<tr><td>${esc(m)}</td><td class="num">${v.c}</td><td class="num">${v.e}</td></tr>`).join("")}</tbody></table></div></div>
-    <div class="sheet"><h3>Questions en attente</h3>${open.length ? `<ul class="list">${open.slice(-6).reverse().map(p => `<li><b>${esc(p.titre)}</b><div class="meta"><span>${esc(p.matiere)}</span><span>${dateFR(p.created_at)}</span></div></li>`).join("")}</ul><a class="btn sm ghost" href="#/forum/questions" style="margin-top:10px">Répondre sur le forum</a>` : `<p class="muted">Aucune question en attente.</p>`}</div></div>
-    <p class="small muted" style="margin-top:14px">Les statistiques de progression des étudiants arriveront avec les comptes utilisateurs.</p>`;
-}
-tool({ id: "espace-prof", title: "Espace professeur", group: "Enseigner", icon: "teacher", short: "Publier des cours et des exercices",
-  lede: "Dépose tes chapitres et tes QCM : ils apparaissent côté étudiants dans « Cours des profs ».",
-  tabs: [{ id: "publier", label: "Publier un cours", render: profUpload }, { id: "cours", label: "Mes cours", render: profCourses }, { id: "exercices", label: "Exercices", render: profExercises }, { id: "stats", label: "Statistiques", render: profStats }] });
 
 /* ---------------- Mes données ---------------- */
 async function settings(body) {
@@ -2717,8 +3275,13 @@ async function settings(body) {
 }
 tool({ id: "reglages", title: "Mes données", group: "Réglages", icon: "settings", hidden: true, short: "", lede: "Sauvegarde, restaure ou efface ce que tu as créé dans l'application.", render: settings });
 
+
 /* ---------------- Démarrage ---------------- */
-route();
+(async () => {
+  try { await seedDemo(); } catch (e) { console.error(e); }
+  PROFILE = await Store.getDoc("profile", null);
+  route();
+})();
 
 </script>
 </body>
