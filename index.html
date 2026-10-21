@@ -1649,6 +1649,16 @@ function chart({ xs, ys, discrete = false, shade = null, hl = null, lines = [], 
 }
 const linspace = (a, b, n = 300) => Array.from({ length: n }, (_, i) => a + (b - a) * i / (n - 1));
 
+/* Affiche un message clair plutôt qu'un onglet vide si un outil plante */
+async function safeRender(fn, el) {
+  try { await fn(el); }
+  catch (err) {
+    console.error(err);
+    const offline = !window.jStat || !window.katex;
+    el.innerHTML = `<div class="note bad"><p><b>Cet onglet n'a pas pu s'afficher.</b> ${offline ? "Les bibliothèques de calcul (jStat, KaTeX) n'ont pas pu être chargées : vérifie ta connexion Internet, puis recharge la page." : "Recharge la page ; si le problème continue, signale-le sur le forum."}</p></div>`;
+  }
+}
+
 /* ---------------- Onglets ---------------- */
 function tabs(root, list, active, onChange) {
   const ids = list.map(t => t.id); const cur = ids.includes(active) ? active : ids[0];
@@ -1657,7 +1667,7 @@ function tabs(root, list, active, onChange) {
   const show = async (id) => {
     $$(".tab", root).forEach(b => b.setAttribute("aria-selected", b.dataset.tab === id));
     panel.setAttribute("aria-labelledby", "tab-" + id);
-    const t = list.find(x => x.id === id); panel.innerHTML = ""; await t.render(panel);
+    const t = list.find(x => x.id === id); panel.innerHTML = ""; await safeRender(t.render, panel);
     onChange && onChange(id);
   };
   $(".tabs", root).addEventListener("click", (e) => { const b = e.target.closest(".tab"); if (b) show(b.dataset.tab); });
@@ -1704,8 +1714,25 @@ async function renderNav(currentId) {
   $("#sidebar").innerHTML = html;
 }
 
+/* Navigation interne : l'appli garde elle-même la page courante (CURRENT) et
+   n'utilise l'adresse du navigateur que si elle est disponible. Ainsi les liens
+   fonctionnent aussi dans un aperçu intégré, où suivre un lien ferait quitter la page. */
+let CURRENT = (() => { try { return location.hash.startsWith("#/") ? location.hash : "#/"; } catch { return "#/"; } })();
+function setAddress(h, replace) { try { if (location.hash !== h) history[replace ? "replaceState" : "pushState"](null, "", h); } catch { /* aperçu sans adresse : on ignore */ } }
+function navigate(h, { replace = false } = {}) { CURRENT = h; setAddress(h, replace); route(); }
+document.addEventListener("click", (e) => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = e.target.closest("a[href^='#']"); if (!a) return;
+  const h = a.getAttribute("href"); e.preventDefault();
+  if (h.startsWith("#/")) navigate(h);
+  else { const t = document.getElementById(h.slice(1)); if (t) { t.focus(); t.scrollIntoView(); } }
+});
+const fromAddress = () => { try { if (location.hash.startsWith("#/") && location.hash !== CURRENT) { CURRENT = location.hash; route(); } } catch {} };
+window.addEventListener("hashchange", fromAddress);
+window.addEventListener("popstate", fromAddress);
+
 async function route() {
-  const [, id = "", tab = ""] = location.hash.replace(/^#/, "").split("/");
+  const [, id = "", tab = ""] = CURRENT.replace(/^#/, "").split("/");
   const main = $("#main");
   closeMenu();
   const t = TOOLS.find(x => x.id === id);
@@ -1717,8 +1744,8 @@ async function route() {
     document.title = `${t.title} · UCO Data Science Hub`;
     page.innerHTML = `<header class="page-head"><h1>${esc(t.title)}</h1>${t.lede ? `<p>${esc(t.lede)}</p>` : ""}</header><div class="body"></div>`;
     const body = $(".body", page);
-    if (t.tabs) await tabs(body, t.tabs, tab, (tid) => history.replaceState(null, "", `#/${t.id}/${tid}`));
-    else await t.render(body);
+    if (t.tabs) await tabs(body, t.tabs, tab, (tid) => { CURRENT = `#/${t.id}/${tid}`; setAddress(CURRENT, true); });
+    else await safeRender(t.render, body);
   }
   if (route._started) { window.scrollTo(0, 0); main.focus({ preventScroll: true }); }
   route._started = true;
@@ -1740,7 +1767,6 @@ $("#themeBtn").addEventListener("click", () => {
   const next = dark ? "light" : "dark"; LS.setItem("udsh:theme", next); applyTheme(next);
   toast(next === "dark" ? "Thème sombre activé" : "Thème clair activé");
 });
-window.addEventListener("hashchange", route);
 
 /* ---------------- Révision espacée (partagé accueil / nav / outil) ---------------- */
 const INTERVALS = { difficile: 1, moyen: 3, facile: 7 };
@@ -2048,7 +2074,7 @@ async function casesList(panel) {
   const show = () => { const d = $("#dom").value, list = all.filter(c => (lv === "Tous" || c.niveau === lv) && (d === "Tous" || c.domaine === d)); $("#cl").innerHTML = list.length ? list.map(c => caseCard(c, cur === c.id)).join("") : `<li>${emptyState("Aucun cas pour ces filtres", "Essaie un autre niveau ou un autre domaine.")}</li>`; };
   $("#lv").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; lv = b.textContent; $$("#lv button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); show(); });
   $("#dom").addEventListener("change", show);
-  panel.addEventListener("click", async (e) => { const b = e.target.closest("[data-start]"); if (!b) return; await Store.setDoc("case_current", +b.dataset.start); location.hash = "#/cas/projet"; });
+  panel.addEventListener("click", async (e) => { const b = e.target.closest("[data-start]"); if (!b) return; await Store.setDoc("case_current", +b.dataset.start); navigate("#/cas/projet"); });
   show();
 }
 async function caseProject(panel) {
@@ -2188,7 +2214,7 @@ function bindProjectForm(panel) {
     d.taches = d.taches.split("\n").map(s => s.trim()).filter(Boolean).map(titre => ({ titre, done: false }));
     await Store.add("projects", d);
     if (d.echeance) await Store.add("deadlines", { titre: d.nom, type: "Projet", date: d.echeance, description: d.type });
-    toast("Projet créé"); location.hash = "#/projets/mes-projets";
+    toast("Projet créé"); navigate("#/projets/mes-projets");
   });
 }
 function projectNew(panel) {
@@ -2200,7 +2226,7 @@ function projectNew(panel) {
 }
 function projectTemplates(panel) {
   panel.innerHTML = `<div class="grid g2">${CONTENT.project_manager.templates.map(t => `<div class="sheet"><h3>${esc(t.nom)}</h3><p class="small">${esc(t.description)}</p>${chipList(t.technologies)}<ul class="plain" style="margin:12px 0">${t.taches.map(x => `<li>${esc(x)}</li>`).join("")}</ul><button class="btn sm" data-tpl="${esc(t.nom)}">Utiliser ce modèle</button></div>`).join("")}</div>`;
-  panel.addEventListener("click", (e) => { const b = e.target.closest("[data-tpl]"); if (!b) return; SS.setItem("udsh:tpl", b.dataset.tpl); location.hash = "#/projets/nouveau"; });
+  panel.addEventListener("click", (e) => { const b = e.target.closest("[data-tpl]"); if (!b) return; SS.setItem("udsh:tpl", b.dataset.tpl); navigate("#/projets/nouveau"); });
 }
 tool({ id: "projets", title: "Mes projets", group: "S'organiser", icon: "projects", short: "Suivi de tes projets data, tâches et échéances",
   lede: "Organise tes projets de cours et personnels : tâches, technologies, avancement.",
@@ -2576,7 +2602,7 @@ function forumAsk(panel) {
     <div class="field full">Mots-clés${multiChecks("tags", TAGS)}</div>
     <div class="full"><button class="btn">Publier la question</button></div></form>
     <div class="sheet"><h3>Pour une réponse rapide</h3><ul class="plain"><li>Un titre précis, sous forme de question.</li><li>Ce que tu as déjà essayé.</li><li>Le message d'erreur complet si tu en as un.</li><li>Un extrait de code court qui reproduit le problème.</li></ul></div></div>`;
-  $("#fa").addEventListener("submit", async (e) => { e.preventDefault(); await Store.add("forum_posts", { ...formData(e.target), replies: [], resolu: false }); toast("Question publiée"); location.hash = "#/forum/questions"; });
+  $("#fa").addEventListener("submit", async (e) => { e.preventDefault(); await Store.add("forum_posts", { ...formData(e.target), replies: [], resolu: false }); toast("Question publiée"); navigate("#/forum/questions"); });
 }
 async function forumPartners(panel) {
   const draw = async () => {
@@ -2625,7 +2651,7 @@ async function profUpload(panel) {
   const kw = () => { const k = keywords($("#ct").value); $("#kw").innerHTML = k.length ? chipList(k, "lvl") : `<p class="small muted">Aucune notion reconnue pour l'instant.</p>`; };
   $("#ct").addEventListener("input", kw);
   $("#file").addEventListener("change", async (e) => { const f = e.target.files[0]; if (!f) return; if (f.size > 2e6) return toast("Fichier trop lourd (2 Mo maximum)."); $("#ct").value = await f.text(); if (!$("#cf").chapitre.value) $("#cf").chapitre.value = f.name.replace(/\.\w+$/, ""); kw(); });
-  $("#cf").addEventListener("submit", async (e) => { e.preventDefault(); const d = formData(e.target); d.notions = keywords(d.contenu); await Store.add("courses", d); toast("Cours publié"); location.hash = "#/espace-prof/cours"; });
+  $("#cf").addEventListener("submit", async (e) => { e.preventDefault(); const d = formData(e.target); d.notions = keywords(d.contenu); await Store.add("courses", d); toast("Cours publié"); navigate("#/espace-prof/cours"); });
 }
 async function profCourses(panel) {
   const draw = async () => {
