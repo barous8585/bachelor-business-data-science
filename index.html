@@ -93,9 +93,6 @@ table.data td.num{font-variant-numeric:tabular-nums}
 .icon-btn{display:inline-grid; place-items:center; width:40px; height:40px; border:1px solid var(--line); background:var(--sheet); color:var(--ink); border-radius:10px; cursor:pointer}
 .icon-btn:hover{border-color:var(--ink-3)}
 .menu-btn{display:none}
-.role-switch{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; background:var(--sheet)}
-.role-switch button{border:0; background:transparent; color:var(--ink-2); font:inherit; font-size:.88rem; padding:5px 12px; border-radius:999px; cursor:pointer}
-.role-switch button[aria-pressed="true"]{background:var(--ink); color:var(--paper); font-weight:700}
 
 /* ---------- Layout ---------- */
 .layout{display:grid; grid-template-columns:var(--side) minmax(0,1fr); min-height:calc(100vh - 60px)}
@@ -132,14 +129,12 @@ main:focus,main:focus-visible{outline:none}
   .brand span{font-size:.95rem}
   main{padding-top:24px}
 }
+@media (max-width:640px){.tab{padding:8px 10px; font-size:.95rem}}
 @media (max-width:520px){
-  .role-switch button{padding:5px 9px; font-size:.8rem}
-  .brand span{display:none}
 }
 
 /* ---------- Tabs ---------- */
-.tabs{display:flex; gap:4px; border-bottom:1px solid var(--line); margin-bottom:22px; overflow-x:auto; scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
+.tabs{display:flex; flex-wrap:wrap; gap:2px 4px; border-bottom:1px solid var(--line); margin-bottom:22px}
 .tab{flex:none; border:0; background:transparent; font:inherit; color:var(--ink-2); padding:10px 14px; cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-1px}
 .tab:hover{color:var(--ink)}
 .tab[aria-selected="true"]{color:var(--ink); font-weight:700; border-bottom-color:var(--teal)}
@@ -326,10 +321,6 @@ hr.sep{border:0; border-top:1px solid var(--line); margin:22px 0}
     <span>UCO Data Science Hub</span>
   </a>
   <div class="topbar-actions">
-    <span class="role-switch" role="group" aria-label="Je suis">
-      <button data-role="etudiant" aria-pressed="true">Étudiant</button>
-      <button data-role="prof" aria-pressed="false">Professeur</button>
-    </span>
     <button class="icon-btn" id="themeBtn" aria-label="Changer de thème" title="Changer de thème">
       <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7a5 5 0 0 1 0 10z" fill="currentColor"/></svg>
     </button>
@@ -1496,16 +1487,31 @@ const CONTENT = {
    elles renvoient déjà des Promises, le reste du code n'a pas à changer.
    ===================================================================== */
 
+/* Accès au stockage du navigateur qui ne plante jamais : si le stockage est
+   bloqué (aperçu sécurisé, navigation privée stricte…), on garde les données
+   en mémoire le temps de la visite. */
+const safeStorage = (kind) => {
+  const mem = new Map(); let real = null;
+  try { real = window[kind]; const k = "__udsh_test__"; real.setItem(k, "1"); real.removeItem(k); } catch { real = null; }
+  return {
+    persistent: !!real,
+    getItem: (k) => { try { return real ? real.getItem(k) : (mem.has(k) ? mem.get(k) : null); } catch { return mem.has(k) ? mem.get(k) : null; } },
+    setItem: (k, v) => { try { if (real) return real.setItem(k, v); } catch (e) { if (e && e.name === "QuotaExceededError") throw e; } mem.set(k, String(v)); },
+    removeItem: (k) => { try { real && real.removeItem(k); } catch {} mem.delete(k); },
+  };
+};
+const LS = safeStorage("localStorage"), SS = safeStorage("sessionStorage");
+
 const Store = (() => {
   const KEY = "udsh:v1";
   let db;
   const load = () => {
     if (db) return db;
-    try { db = JSON.parse(localStorage.getItem(KEY)) || {}; } catch { db = {}; }
+    try { db = JSON.parse(LS.getItem(KEY)) || {}; } catch { db = {}; }
     db.collections ||= {}; db.docs ||= {};
     return db;
   };
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) { toast("Impossible d'enregistrer : le stockage du navigateur est plein ou bloqué."); } };
+  const save = () => { try { LS.setItem(KEY, JSON.stringify(db)); } catch (e) { toast("Impossible d'enregistrer : le stockage du navigateur est plein ou bloqué."); } };
   const col = (name) => (load().collections[name] ||= []);
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
   return {
@@ -1685,11 +1691,10 @@ const TOOLS = [];
 function tool(def) { TOOLS.push(def); }
 const svgIcon = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k] || ""}</svg>`;
 
-let ROLE = localStorage.getItem("udsh:role") || "etudiant";
 
 async function renderNav(currentId) {
   const due = (await Store.list("flashcards")).filter(isDue).length;
-  const visible = TOOLS.filter(t => !t.hidden && (t.group !== "Enseigner" || ROLE === "prof"));
+  const visible = TOOLS.filter(t => !t.hidden);
   let html = `<a class="nav-link" href="#/" ${!currentId ? 'aria-current="page"' : ""}>${svgIcon("home")}Accueil</a>`;
   for (const g of GROUPS) {
     const items = visible.filter(t => t.group === g); if (!items.length) continue;
@@ -1729,20 +1734,12 @@ $("#scrim").addEventListener("click", closeMenu);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
 
 function applyTheme(t) { if (t === "auto") document.documentElement.removeAttribute("data-theme"); else document.documentElement.dataset.theme = t; }
-applyTheme(localStorage.getItem("udsh:theme") || "auto");
+applyTheme(LS.getItem("udsh:theme") || "auto");
 $("#themeBtn").addEventListener("click", () => {
   const dark = document.documentElement.dataset.theme ? document.documentElement.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  const next = dark ? "light" : "dark"; localStorage.setItem("udsh:theme", next); applyTheme(next);
+  const next = dark ? "light" : "dark"; LS.setItem("udsh:theme", next); applyTheme(next);
   toast(next === "dark" ? "Thème sombre activé" : "Thème clair activé");
 });
-function applyRole() { $$(".role-switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.role === ROLE))); }
-$(".role-switch").addEventListener("click", (e) => {
-  const b = e.target.closest("button"); if (!b) return;
-  ROLE = b.dataset.role; localStorage.setItem("udsh:role", ROLE); applyRole();
-  if (ROLE === "prof") location.hash = "#/espace-prof"; else if (location.hash.startsWith("#/espace-prof")) location.hash = "#/"; else route();
-  toast(ROLE === "prof" ? "Mode professeur : l'espace professeur est ouvert" : "Mode étudiant");
-});
-applyRole();
 window.addEventListener("hashchange", route);
 
 /* ---------------- Révision espacée (partagé accueil / nav / outil) ---------------- */
@@ -1792,7 +1789,7 @@ async function renderHome(page) {
   </section>
   <section aria-label="À reprendre"><div class="resume">${resume.join("")}</div></section>
   <section class="directory" aria-label="Tous les outils">
-    ${GROUPS.filter(g => g !== "Enseigner" || ROLE === "prof").map(g => `<div><h2>${g}</h2><ul>${TOOLS.filter(t => t.group === g && !t.hidden).map(t => `<li><a href="#/${t.id}"><b>${esc(t.title)}</b><span>${esc(t.short)}</span></a></li>`).join("")}</ul></div>`).join("")}
+    ${GROUPS.map(g => `<div><h2>${g}</h2><ul>${TOOLS.filter(t => t.group === g && !t.hidden).map(t => `<li><a href="#/${t.id}"><b>${esc(t.title)}</b><span>${esc(t.short)}</span></a></li>`).join("")}</ul></div>`).join("")}
   </section>`;
 
   const xs = linspace(-4, 4, 260), ys = xs.map(x => Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI));
@@ -2071,7 +2068,7 @@ async function caseProject(panel) {
   panel.addEventListener("change", async (e) => { const i = e.target.dataset.o; if (i === undefined) return; done[i] = e.target.checked; await Store.setDoc("case_progress_" + id, done); render(); });
   panel.addEventListener("click", async (e) => {
     if (e.target.id === "quit") { await Store.setDoc("case_current", null); toast("Cas abandonné"); route(); }
-    const d = e.target.closest("[data-ds]"); if (d) sessionStorage.setItem("udsh:ds", d.dataset.ds);
+    const d = e.target.closest("[data-ds]"); if (d) SS.setItem("udsh:ds", d.dataset.ds);
   });
   render();
 }
@@ -2195,7 +2192,7 @@ function bindProjectForm(panel) {
   });
 }
 function projectNew(panel) {
-  const tpl = sessionStorage.getItem("udsh:tpl"); sessionStorage.removeItem("udsh:tpl");
+  const tpl = SS.getItem("udsh:tpl"); SS.removeItem("udsh:tpl");
   const t = tpl ? CONTENT.project_manager.templates.find(x => x.nom === tpl) : null;
   panel.innerHTML = (t ? `<div class="note" style="margin-bottom:14px"><p>Pré-rempli à partir du modèle <b>${esc(t.nom)}</b>. Ajuste ce qui doit l'être.</p></div>` : "")
     + projectForm(t ? { nom: t.nom, description: t.description, taches: t.taches, technologies: t.technologies } : {});
@@ -2203,7 +2200,7 @@ function projectNew(panel) {
 }
 function projectTemplates(panel) {
   panel.innerHTML = `<div class="grid g2">${CONTENT.project_manager.templates.map(t => `<div class="sheet"><h3>${esc(t.nom)}</h3><p class="small">${esc(t.description)}</p>${chipList(t.technologies)}<ul class="plain" style="margin:12px 0">${t.taches.map(x => `<li>${esc(x)}</li>`).join("")}</ul><button class="btn sm" data-tpl="${esc(t.nom)}">Utiliser ce modèle</button></div>`).join("")}</div>`;
-  panel.addEventListener("click", (e) => { const b = e.target.closest("[data-tpl]"); if (!b) return; sessionStorage.setItem("udsh:tpl", b.dataset.tpl); location.hash = "#/projets/nouveau"; });
+  panel.addEventListener("click", (e) => { const b = e.target.closest("[data-tpl]"); if (!b) return; SS.setItem("udsh:tpl", b.dataset.tpl); location.hash = "#/projets/nouveau"; });
 }
 tool({ id: "projets", title: "Mes projets", group: "S'organiser", icon: "projects", short: "Suivi de tes projets data, tâches et échéances",
   lede: "Organise tes projets de cours et personnels : tâches, technologies, avancement.",
@@ -2342,7 +2339,7 @@ function describeNum(rows) {
   return `<h3 style="margin-top:18px">Résumé (équivalent de <code>df.describe()</code>)</h3><div class="table-wrap" style="max-height:none"><table class="data"><thead><tr><th>Colonne</th><th>Moyenne</th><th>Écart-type</th><th>Min</th><th>Médiane</th><th>Max</th></tr></thead><tbody>${st.map(([c, ...x]) => `<tr><td>${esc(c)}</td>${x.map(v => `<td class="num">${fmt(v)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 }
 async function dsPredefined(panel) {
-  const pre = sessionStorage.getItem("udsh:ds"); sessionStorage.removeItem("udsh:ds");
+  const pre = SS.getItem("udsh:ds"); SS.removeItem("udsh:ds");
   const names = Object.keys(DATASETS);
   panel.innerHTML = `<div class="grid g-side"><div class="sheet" id="out"></div><form class="sheet stack" id="df">
     <label class="field">Type de données<select name="type">${opts(names, pre || names[0])}</select></label><p class="small muted" id="desc"></p>
@@ -2685,7 +2682,7 @@ tool({ id: "espace-prof", title: "Espace professeur", group: "Enseigner", icon: 
 /* ---------------- Mes données ---------------- */
 async function settings(body) {
   const json = await Store.exportAll(), kb = (new Blob([json]).size / 1024).toFixed(0);
-  body.innerHTML = `<div class="grid g2"><div class="sheet"><h3>Où sont mes données ?</h3><p>Tout ce que tu crées (flashcards, projets, portfolio, forum…) est enregistré <b>dans ce navigateur, sur cet appareil</b>. Rien n'est envoyé sur Internet.</p><p class="small muted">Taille actuelle : ${kb} Ko. Si tu vides les données de navigation, elles seront perdues : pense à faire une sauvegarde.</p></div>
+  body.innerHTML = `<div class="grid g2"><div class="sheet"><h3>Où sont mes données ?</h3><p>Tout ce que tu crées (flashcards, projets, portfolio, forum…) est enregistré <b>dans ce navigateur, sur cet appareil</b>. Rien n'est envoyé sur Internet.</p>${LS.persistent ? "" : `<div class="note bad" style="margin-bottom:10px"><p><b>Le stockage est bloqué ici</b> (aperçu ou navigation privée) : tes données disparaîtront à la fermeture de la page. Ouvre le site directement dans ton navigateur pour les conserver.</p></div>`}<p class="small muted">Taille actuelle : ${kb} Ko. Si tu vides les données de navigation, elles seront perdues : pense à faire une sauvegarde.</p></div>
     <div class="sheet stack"><h3>Sauvegarde</h3><button class="btn" id="exp">Télécharger une sauvegarde</button><label class="field">Restaurer une sauvegarde<input type="file" id="imp" accept="application/json,.json"></label><p class="small muted">Utile aussi pour passer d'un ordinateur à un autre.</p></div></div>
     <div class="sheet" style="margin-top:16px"><h3>Tout effacer</h3><p class="small">Supprime définitivement toutes les données de l'application sur cet appareil.</p><button class="btn danger" id="clr">Effacer toutes mes données</button></div>`;
   $("#exp").addEventListener("click", async () => download(`uco-data-science-hub_sauvegarde_${today()}.json`, await Store.exportAll(), "application/json"));
