@@ -1,8 +1,20 @@
-# 🎓 UCO Data Science Hub
+# UCO Data Science Hub
 
-**Plateforme complète d'apprentissage pour les étudiants du Bachelor Business Data Science - UCO Angers**
+Outils de révision et de pratique pour les étudiants du **Bachelor Business Data Science** de l'UCO Angers : statistiques interactives, assistant code, cas business, flashcards à répétition espacée, générateur de datasets, entretiens, portfolio, entraide et espace professeur.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://bachelor-business-data-science-pmitzqgxkerabnywjq9bwv.streamlit.app/)
+## Version web (`index.html`)
+
+Le site tient en **un seul fichier**, `index.html`, sans serveur ni installation.
+
+- **Tester en local** : double-clique sur `index.html` (connexion Internet nécessaire pour les polices, KaTeX et jStat).
+- **Publier sur GitHub Pages** : dans le dépôt GitHub, *Settings → Pages → Build and deployment*, choisis *Deploy from a branch*, branche `main`, dossier `/ (root)`, puis *Save*. Le site sera en ligne sur `https://barous8585.github.io/bachelor-business-data-science/`.
+- **Données** : pour l'instant, tout est enregistré dans le navigateur de chaque utilisateur (localStorage). Tout l'accès aux données passe par l'objet `Store` en haut du script : pour brancher une base en ligne (Supabase, Firebase…), il suffit de réécrire ses méthodes.
+- **Contenu** : les questions, flashcards, cas business, ressources, etc. sont dans l'objet `CONTENT` au milieu du fichier, modifiables directement.
+- **À venir** : comptes utilisateurs, base de données partagée, génération d'exercices par IA (via un service qui garde la clé API secrète).
+
+## Ancienne version Streamlit
+
+Le code Streamlit (`app.py`, `modules/`) est conservé tel quel pour réutilisation. La documentation ci-dessous le concerne.
 
 ---
 
