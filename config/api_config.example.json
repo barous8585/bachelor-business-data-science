@@ -1,0 +1,4 @@
+{
+  "GEMINI_API_KEY": "",
+  "_comment": "Copier ce fichier en config/api_config.json (ignore par Git) et y mettre votre cle. Sur Streamlit Cloud, utiliser plutot les Secrets."
+}

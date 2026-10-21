@@ -112,7 +112,7 @@ portfolio_id = create_or_update_portfolio({'full_name': '', ...}, user_id=studen
 11. ✅ dataset_generator.py - Générateur de datasets
 
 ### IA Gemini 2.5 Flash
-- ✅ API Key configurée : `AIzaSyCSEsMhmoWOOpFOOW3enZZ-Y3FtMxkkvd8`
+- ✅ API Key configurée : `VOTRE_CLE_API_GEMINI`
 - ✅ 1,500 requêtes/jour gratuites
 - ✅ Génération d'exercices fonctionnelle
 

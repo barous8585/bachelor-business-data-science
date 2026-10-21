@@ -297,9 +297,12 @@ Ton explication (200 mots max) :
     except Exception as e:
         return f"Explication non disponible : {e}"
 
+@st.cache_data(ttl=1800, show_spinner=False)
 def test_api_connection() -> bool:
     """
-    Teste la connexion à l'API Gemini
+    Teste la connexion à l'API Gemini.
+    Le résultat est mis en cache 30 min pour ne pas consommer une requête
+    du quota à chaque affichage de l'espace professeur.
     
     Returns:
         True si la connexion fonctionne, False sinon

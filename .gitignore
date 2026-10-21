@@ -51,3 +51,7 @@ streamlit_debug.log
 # Temporary
 *.tmp
 *.bak
+
+# Secrets (ne jamais committer de clé API)
+.env
+config/api_config.json

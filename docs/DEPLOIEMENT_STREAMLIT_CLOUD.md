@@ -35,7 +35,7 @@ Copie-colle ceci dans la zone de texte :
 
 ```toml
 [api]
-gemini_key = "AIzaSyCSEsMhmoWOOpFOOW3enZZ-Y3FtMxkkvd8"
+gemini_key = "VOTRE_CLE_API_GEMINI"
 ```
 
 ### 5️⃣ Déployer
@@ -72,7 +72,7 @@ Une fois déployée, teste ces fonctionnalités :
 
 **Erreur : IA non connectée**
 - Vérifie que tu as bien configuré les secrets dans "Advanced settings > Secrets"
-- La clé doit être exactement : `AIzaSyCSEsMhmoWOOpFOOW3enZZ-Y3FtMxkkvd8`
+- La clé doit être exactement : `VOTRE_CLE_API_GEMINI`
 
 **Erreur : Database error**
 - C'est normal ! La base SQLite se créera automatiquement au premier lancement
